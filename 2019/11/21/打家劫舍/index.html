@@ -6,24 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://caicaijason.github.io">
-  <title>回溯系列详解 | Jason</title>
+  <title>打家劫舍 | Jason</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="回溯系列详解78. 子集给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。说明：解集不能包含重复的子集。">
-<meta name="keywords" content="算法,回溯">
+  <meta name="description" content="198. 打家劫舍给定一个数组，相邻元素不能选，求元素之和的最大值。 示例 1: 1234输入: [1,2,3,1]输出: 4解释: 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。     偷窃到的最高金额 = 1 + 3 = 4 。  示例 2: 1234输入: [2,7,9,3,1]输出: 12解释: 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金">
+<meta name="keywords" content="动态规划,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="回溯系列详解">
-<meta property="og:url" content="https://caicaijason.github.io/2019/11/20/回溯系列详解/index.html">
+<meta property="og:title" content="打家劫舍">
+<meta property="og:url" content="https://caicaijason.github.io/2019/11/21/打家劫舍/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="回溯系列详解78. 子集给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。说明：解集不能包含重复的子集。">
+<meta property="og:description" content="198. 打家劫舍给定一个数组，相邻元素不能选，求元素之和的最大值。 示例 1: 1234输入: [1,2,3,1]输出: 4解释: 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。     偷窃到的最高金额 = 1 + 3 = 4 。  示例 2: 1234输入: [2,7,9,3,1]输出: 12解释: 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://caicaijason.github.io/2019/11/20/回溯系列详解/1.png">
-<meta property="og:updated_time" content="2019-11-21T02:50:00.257Z">
+<meta property="og:updated_time" content="2019-11-21T02:09:11.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="回溯系列详解">
-<meta name="twitter:description" content="回溯系列详解78. 子集给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。说明：解集不能包含重复的子集。">
-<meta name="twitter:image" content="https://caicaijason.github.io/2019/11/20/回溯系列详解/1.png">
+<meta name="twitter:title" content="打家劫舍">
+<meta name="twitter:description" content="198. 打家劫舍给定一个数组，相邻元素不能选，求元素之和的最大值。 示例 1: 1234输入: [1,2,3,1]输出: 4解释: 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。     偷窃到的最高金额 = 1 + 3 = 4 。  示例 2: 1234输入: [2,7,9,3,1]输出: 12解释: 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金">
   
     <link rel="alternative" href="/atom.xml" title="Jason" type="application/atom+xml">
   
@@ -194,14 +192,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-回溯系列详解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-打家劫舍" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      回溯系列详解
+      打家劫舍
     </h1>
   
 
@@ -213,8 +211,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2019/11/20/回溯系列详解/" class="archive-article-date">
-        <time datetime="2019-11-20T06:58:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-20</time>
+<a href="/2019/11/21/打家劫舍/" class="archive-article-date">
+        <time datetime="2019-11-21T01:40:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
 </a>
 
   
@@ -227,7 +225,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.8k字</span>
+      <span class="post-count">1.4k字</span>
     </span>
   </span>
 
@@ -236,7 +234,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">7分</span>
+      <span class="post-count">5分</span>
     </span>
   </span>
 </div>
@@ -247,90 +245,53 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="回溯系列详解"><a href="#回溯系列详解" class="headerlink" title="回溯系列详解"></a>回溯系列详解</h1><h2 id="78-子集"><a href="#78-子集" class="headerlink" title="78. 子集"></a>78. 子集</h2><p>给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。<br>说明：解集不能包含重复的子集。  </p>
-<a id="more"></a>
-<p>示例:  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [1,2,3]  </span><br><span class="line">输出:  </span><br><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [1],</span><br><span class="line">  [2],</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [1,3],</span><br><span class="line">  [2,3],</span><br><span class="line">  [1,2],</span><br><span class="line">  []</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>话不多说，show you the code。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法一，迭代思路</span></span><br><span class="line">        res=[]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="comment"># 每遇到一个元素</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(res)):</span><br><span class="line">                <span class="comment"># 就在现有子集元素的基础上加上该元素，组成新的子集</span></span><br><span class="line">                res.append(res[j]+[i])</span><br><span class="line">            res.append([i])</span><br><span class="line">        <span class="comment"># 最后补上一个空集</span></span><br><span class="line">        res.append([])</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="comment">#方法一-1，依旧是迭代，用列表推导式的方法更pythonic</span></span><br><span class="line">        res=[[]]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            res+=[[i]+j <span class="keyword">for</span> j <span class="keyword">in</span> res ]</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"><span class="comment"># 方法二、递归</span></span><br><span class="line">        res = []</span><br><span class="line">        n = len(nums)</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(i, tmp)</span>:</span></span><br><span class="line">            res.append(tmp)</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i, n):</span><br><span class="line">                helper(j + <span class="number">1</span>,tmp + [nums[j]] )</span><br><span class="line">        helper(<span class="number">0</span>, [])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-<h2 id="90-子集-II"><a href="#90-子集-II" class="headerlink" title="90. 子集 II"></a>90. 子集 II</h2><p>给定一个可能包含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。<br>说明：解集不能包含重复的子集。<br>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,2]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [2],</span><br><span class="line">  [1],</span><br><span class="line">  [1,2,2],</span><br><span class="line">  [2,2],</span><br><span class="line">  [1,2],</span><br><span class="line">  []</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>本题和上一题的唯一区别就在于  <strong>nums会出现重复元素</strong>。</li>
-<li>因此其实做法上只需要增加判断每次迭代或者递归，新的子集元素是否存在于原子集中即可</li>
-<li>但是由于解集不能包含重复的子集（相同元素的不同序列，如[1,2,2],[2,1,2]），因此在迭代之前必须对nums进行  <strong>排序</strong>  操作。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsetsWithDup</span><span class="params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span></span><br><span class="line"><span class="comment"># 方法一、递归解法</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        n = len(nums)</span><br><span class="line">        res = []</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">help</span><span class="params">(idx,tmp_list)</span>:</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 判断tmp_list不在原子集才加入</span></span><br><span class="line">            <span class="keyword">if</span> tmp_list <span class="keyword">not</span> <span class="keyword">in</span> res:</span><br><span class="line">                res.append(tmp_list)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(idx,n):</span><br><span class="line">                help(i+<span class="number">1</span>,tmp_list+[nums[i]])</span><br><span class="line">        help(<span class="number">0</span>,[])</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"><span class="comment"># 方法二、列表推导式法</span></span><br><span class="line">        res=[[]]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> sorted(nums):</span><br><span class="line">            <span class="comment"># 判断[i]+j不在原子集才加入</span></span><br><span class="line">            res+=[[i]+j <span class="keyword">for</span> j <span class="keyword">in</span> res <span class="keyword">if</span> [i]+j <span class="keyword">not</span> <span class="keyword">in</span> res]</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"><span class="comment"># 方法三、迭代法</span></span><br><span class="line">        res=[]</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="comment"># 每遇到一个元素</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(res)):</span><br><span class="line">                <span class="comment"># 判断res[j]+[i]不在原子集才加入</span></span><br><span class="line">                <span class="keyword">if</span> res[j]+[i] <span class="keyword">not</span> <span class="keyword">in</span> res:</span><br><span class="line">                <span class="comment"># 就在现有子集元素的基础上加上该元素，组成新的子集</span></span><br><span class="line">                    res.append(res[j]+[i])</span><br><span class="line">            <span class="keyword">if</span> [i] <span class="keyword">not</span> <span class="keyword">in</span> res:</span><br><span class="line">                res.append([i])</span><br><span class="line">        <span class="comment"># 最后补上一个空集</span></span><br><span class="line">        res.append([])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="39-组合总和"><a href="#39-组合总和" class="headerlink" title="39. 组合总和"></a>39. 组合总和</h2><p>给定一个无重复元素的数组candidates 和一个目标数 target，找出candidates中所有可以使数字和为target的组合。<br> candidates 中的数字可以无限制重复被选取。<br>说明：  </p>
-<ul>
-<li>所有数字（包括 target ）都是正整数。</li>
-<li>解集不能包含重复的组合。  </li>
-</ul>
+    <h2 id="198-打家劫舍"><a href="#198-打家劫舍" class="headerlink" title="198. 打家劫舍"></a>198. 打家劫舍</h2><p>给定一个数组，相邻元素不能选，求元素之和的最大值。</p>
 <p>示例 1:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: candidates = [2,3,6,7], target = 7,</span><br><span class="line">所求解集为:</span><br><span class="line">[</span><br><span class="line">  [7],</span><br><span class="line">  [2,2,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,1]</span><br><span class="line">输出: 4</span><br><span class="line">解释: 偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。</span><br><span class="line">     偷窃到的最高金额 = 1 + 3 = 4 。</span><br></pre></td></tr></table></figure>
 
 <p>示例 2:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: candidates = [2,3,5], target = 8,</span><br><span class="line">所求解集为:</span><br><span class="line">[</span><br><span class="line">  [2,2,2,2],</span><br><span class="line">  [2,3,3],</span><br><span class="line">  [3,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,7,9,3,1]</span><br><span class="line">输出: 12</span><br><span class="line">解释: 偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。</span><br><span class="line">      偷窃到的最高金额 = 2 + 9 + 1 = 12 。</span><br></pre></td></tr></table></figure>
 
-<p>本题的总体思路是回溯+剪枝</p>
-<ul>
-<li>以 target = 7 为根结点，每一个分支做减法。</li>
-<li>减到 0 或者负数的时候，剪枝。其中，减到 0 的时候结算，这里 “结算” 的意思是添加到结果集。</li>
-</ul>
-<p><img src="//caicaijason.github.io/2019/11/20/回溯系列详解/1.png" alt><br>上图说明：<br>一个蓝色正方形表示的是 “尝试将这个数到数组 candidates 中找组合”，那么怎么找呢？挨个减掉那些数就可以了。</p>
-<ul>
-<li><p>在减的过程中，会得到 0 和负数，也就是被我标红色和粉色的结点：</p>
-</li>
-<li><ul>
-<li>得到 0 是我们喜欢的，从 0 这一点向根结点走的路径（很可能只走过一条边，也算一个路径），就是一个组合，在这一点要做一次结算（把根结点到 0 所经过的路径，加入结果集）。</li>
-</ul>
-</li>
-<li><ul>
-<li>得到负数就说明这条路走不通，没有必要再走下去了。</li>
-</ul>
-</li>
-</ul>
-<p>总结一下：在减的过程中，得到 0 或者负数，就没有必要再走下去，所以这两种情况就分别表示成为叶子结点。此时递归结束，然后要发生回溯。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum</span><span class="params">(self, candidates: List[int], target: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> candidates:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        <span class="comment"># 先将candidates进行排序，避免后面剪枝的时候出现如[2, 2, 3], [2, 3, 2]这样的重复路径</span></span><br><span class="line">        <span class="comment"># 要排序的理由：1、前面用过的数后面不能再用；2、下一层边上的数不能小于上一层边上的数。</span></span><br><span class="line">        candidates.sort()</span><br><span class="line">        res=[]</span><br><span class="line">        path=[]</span><br><span class="line">        n=len(candidates)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(start,target)</span>:</span></span><br><span class="line">            <span class="comment"># 递归终止条件，Python 中可变对象是引用传递，因此需要将当前 path 里的值拷贝出来</span></span><br><span class="line">            <span class="keyword">if</span> target==<span class="number">0</span>:</span><br><span class="line">                print(path)</span><br><span class="line">                print(path[:])</span><br><span class="line">                res.append(path[:])</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(start,n):</span><br><span class="line">                tmp= target-candidates[i]</span><br><span class="line">                <span class="keyword">if</span> tmp&lt;<span class="number">0</span>:<span class="keyword">break</span></span><br><span class="line">                path.append(candidates[i])</span><br><span class="line">                <span class="comment"># 因为下一层不能比上一层还小，起始索引还从 index 开始</span></span><br><span class="line">                dfs(i,tmp)</span><br><span class="line">                path.pop()</span><br><span class="line">        dfs(<span class="number">0</span>,target)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-<h2 id="40-组合总和-II"><a href="#40-组合总和-II" class="headerlink" title="40. 组合总和 II"></a>40. 组合总和 II</h2><p>给定一个数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</p>
-<p>candidates 中的每个数字在每个组合中只能使用一次。</p>
-<p>说明：</p>
-<p>所有数字（包括目标数）都是正整数。<br>解集不能包含重复的组合。<br>示例 1:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: candidates = [10,1,2,7,6,1,5], target = 8,</span><br><span class="line">所求解集为:</span><br><span class="line">[</span><br><span class="line">  [1, 7],</span><br><span class="line">  [1, 2, 5],</span><br><span class="line">  [2, 6],</span><br><span class="line">  [1, 1, 6]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>示例 2:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入: candidates = [2,5,2,1,2], target = 5,</span><br><span class="line">所求解集为:</span><br><span class="line">[</span><br><span class="line">  [1,2,2],</span><br><span class="line">  [5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
+<a id="more"></a>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>本题和上题的区别在于candidates中的元素不可重复使用</li>
-<li>因此只需要在递归的时候每层dfs从下一个元素开始即可</li>
-<li>因为本身candidates中有重复元素，因此path在加入res之前需要查重</li>
+<li>动态规划基本题型，dp[i]表示到i为止可以偷到的最多钱</li>
+<li>先从最简单的情况入手，初始化dp数组：当数组长度为1时候，显然dp[0]=nums[0];当数组长度为2，最大值为两个数的max，所以dp[1]=max(num[0:2])</li>
+<li>求dp的递推公式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">话不多说，show you the code</span><br><span class="line">```python</span><br><span class="line">class Solution:</span><br><span class="line">    def rob(self, nums: List[int]) -&gt; int:</span><br><span class="line"># 方法一、基本DP</span><br><span class="line">        n=len(nums)</span><br><span class="line">        if not nums:return 0</span><br><span class="line">        if n&lt;=2:</span><br><span class="line">            return max(nums)</span><br><span class="line">        # dp[i]表示到i为止可以偷到的最多钱</span><br><span class="line">        dp=[0]*len(nums)</span><br><span class="line">        dp[0]=nums[0]</span><br><span class="line">        dp[1]=max(nums[0:2])</span><br><span class="line">        for i in range(2,n):</span><br><span class="line">            #递推公式    </span><br><span class="line">            dp[i]=max(dp[i-2]+nums[i],dp[i-1])</span><br><span class="line">        return dp[-1]</span><br><span class="line"># 方法二、优化版DP</span><br><span class="line">        pre,now=0,0</span><br><span class="line">        for i in nums:</span><br><span class="line">            # 迭代nums，pre变成now，now取now和pre+i的最大值</span><br><span class="line">            pre ,now = now, max(pre+i,now)</span><br><span class="line">        return now</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>话不多说，show you the code</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum2</span><span class="params">(self, candidates: List[int], target: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> candidates:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        res=[]</span><br><span class="line">        path=[]</span><br><span class="line">        candidates.sort()</span><br><span class="line">        n=len(candidates)</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(start,target)</span>:</span></span><br><span class="line">            <span class="comment">#与上题区别一、 去重</span></span><br><span class="line">            <span class="keyword">if</span> target==<span class="number">0</span> <span class="keyword">and</span> path[:] <span class="keyword">not</span> <span class="keyword">in</span> res:</span><br><span class="line">                res.append(path[:])</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(start,n):</span><br><span class="line">                tmp=target-candidates[i]</span><br><span class="line">                <span class="keyword">if</span> tmp&lt;<span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                path.append(candidates[i])</span><br><span class="line">                <span class="comment">#与上题区别二、 从下一个元素开始dfs</span></span><br><span class="line">                dfs(i+<span class="number">1</span>,tmp)</span><br><span class="line">                path.pop()</span><br><span class="line">        dfs(<span class="number">0</span>,target)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="213-打家劫舍-II"><a href="#213-打家劫舍-II" class="headerlink" title="213. 打家劫舍 II"></a>213. 打家劫舍 II</h2><p>你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。</p>
+<p>给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,3,2]</span><br><span class="line">输出: 3</span><br><span class="line">解释: 你不能先偷窃 1 号房屋（金额 = 2），然后偷窃 3 号房屋（金额 = 2）, 因为他们是相邻的。</span><br></pre></td></tr></table></figure>
 
-<h2 id="216-组合总和-III"><a href="#216-组合总和-III" class="headerlink" title="216. 组合总和 III"></a>216. 组合总和 III</h2><p>找出所有相加之和为 n 的 k 个数的组合。组合中只允许含有 1 - 9 的正整数，并且每种组合中不存在重复的数字。</p>
-<p>说明：</p>
-<ul>
-<li>所有数字都是正整数。</li>
-<li>解集不能包含重复的组合。<br>示例 1:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: k = 3, n = 7</span><br><span class="line">输出: [[1,2,4]]</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
 <p>示例 2:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: k = 3, n = 9</span><br><span class="line">输出: [[1,2,6], [1,3,5], [2,3,4]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,1]</span><br><span class="line">输出: 4</span><br><span class="line">解释: 你可以先偷窃 1 号房屋（金额 = 1），然后偷窃 3 号房屋（金额 = 3）。</span><br><span class="line">     偷窃到的最高金额 = 1 + 3 = 4 。</span><br></pre></td></tr></table></figure>
 
 <h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>本题和前两题的区别在于candidates变成了[1,2,3,4,5,6,7,8,9],且path长度只能是k,candidates不可重复使用</li>
-<li>因此只需要在递归的时候每层dfs从下一个元素开始即可，并且在加入path之前，确认path的长度是否为k</li>
+<li>与上题类似，唯一的区别就是数组的第一个和最后一个不能同时取</li>
+<li>因此可以将问题分解，把数组分为nums1=num[:-1],nums2=nums[1:],分别排除掉最后一个和第一个元素，分别求解出nums1和nums2能获得的最大值，最后二者取max</li>
 </ul>
-<p>话不多说，show you the code</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum3</span><span class="params">(self, k: int, n: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="comment"># 排除k=0,n=0和k&lt;n的情况</span></span><br><span class="line">        <span class="keyword">if</span> k==<span class="number">0</span> <span class="keyword">or</span> n==<span class="number">0</span> <span class="keyword">or</span> k&gt;n:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        res,path=[],[]</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(start,target)</span>:</span></span><br><span class="line">            <span class="comment"># 当此时target=0且path长度为k时，加入path</span></span><br><span class="line">            <span class="keyword">if</span> target==<span class="number">0</span> <span class="keyword">and</span> len(path)==k:</span><br><span class="line">                res.append(path[:])</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(start,<span class="number">10</span>):</span><br><span class="line">                tmp=target-i</span><br><span class="line">                <span class="comment"># 剪枝</span></span><br><span class="line">                <span class="keyword">if</span> tmp&lt;<span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                path.append(i)</span><br><span class="line">                <span class="comment"># 从下一个开始继续dfs</span></span><br><span class="line">                helper(i+<span class="number">1</span>,tmp)</span><br><span class="line">                print(path,i)</span><br><span class="line">                path.pop()</span><br><span class="line">        helper(<span class="number">1</span>,n)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>话不多说，show you the code:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:<span class="keyword">return</span> <span class="number">0</span>  </span><br><span class="line">        <span class="keyword">if</span> len(nums)&lt;=<span class="number">2</span>:<span class="keyword">return</span> max(nums)</span><br><span class="line">        <span class="comment"># 和一条直线的版本一样，只要取把第一个和最后一个房子去掉的最大值就可以了</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># rob1函数即为上题的主函数</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">rob1</span><span class="params">(nums)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> nums:<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            n=len(nums)</span><br><span class="line">            <span class="keyword">if</span> n&lt;=<span class="number">2</span>:<span class="keyword">return</span> max(nums)</span><br><span class="line">            dp=[<span class="number">0</span>]*n</span><br><span class="line">            dp[<span class="number">0</span>],dp[<span class="number">1</span>]=nums[<span class="number">0</span>],max(nums[<span class="number">0</span>:<span class="number">2</span>])</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,n):</span><br><span class="line">                <span class="comment"># 当前值为上一个取了，或者取了上上个和本个的最大值</span></span><br><span class="line">                dp[i]=max(dp[i<span class="number">-2</span>]+nums[i],dp[i<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 和一条直线的版本一样，只要取把第一个和最后一个房子去掉的最大值就可以了</span></span><br><span class="line">        <span class="keyword">return</span> max(rob1(nums[:<span class="number">-1</span>]),rob1(nums[<span class="number">1</span>:]))</span><br></pre></td></tr></table></figure>
+
+<h2 id="337-打家劫舍-III"><a href="#337-打家劫舍-III" class="headerlink" title="337. 打家劫舍 III"></a>337. 打家劫舍 III</h2><p>在上次打劫完一条街道之后和一圈房屋后，小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为“根”。 除了“根”之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。</p>
+<p>计算在不触动警报的情况下，小偷一晚能够盗取的最高金额。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,2,3,null,3,null,1]</span><br><span class="line">     3</span><br><span class="line">    / \</span><br><span class="line">   2   3</span><br><span class="line">    \   \ </span><br><span class="line">     3   1</span><br><span class="line"></span><br><span class="line">输出: 7 </span><br><span class="line">解释: 小偷一晚能够盗取的最高金额 = 3 + 3 + 1 = 7.</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,4,5,1,3,null,1]</span><br><span class="line"></span><br><span class="line">     3</span><br><span class="line">    / \</span><br><span class="line">   4   5</span><br><span class="line">  / \   \ </span><br><span class="line"> 1   3   1</span><br><span class="line"></span><br><span class="line">输出: 9</span><br><span class="line">解释: 小偷一晚能够盗取的最高金额 = 4 + 5 = 9.</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><ul>
+<li>与上题类似，只是房子的排布变成了二叉树排列。</li>
+<li>定义一个树状dp，返回两个值，dp[0]表示抢了当前节点能获得的钱，dp[1]表示不抢的能获得的钱</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, root: TreeNode)</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># dp[0]表示抢了当前节点能获得的钱，dp[1]表示不抢的</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dp</span><span class="params">(root)</span>:</span></span><br><span class="line">            <span class="comment"># 确定dp的终止条件，空节点的话抢或者不抢都是0</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>,<span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 递归左右子树</span></span><br><span class="line">            l=dp(root.left)</span><br><span class="line">            r=dp(root.right)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 如果抢了根节点，那么左右孩子都不能抢，所以rob=l[1]+r[1]+root.val</span></span><br><span class="line">            rob=root.val+l[<span class="number">1</span>]+r[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 如果根节点不抢，左右孩子不一定抢不抢，递归下去看，所以取max。</span></span><br><span class="line">            skip=max(l)+max(r)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> rob,skip</span><br><span class="line">        <span class="keyword">return</span> max(dp(root))</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
     
 
     
@@ -376,7 +337,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://caicaijason.github.io/2019/11/20/回溯系列详解/" title="回溯系列详解" target="_blank">https://caicaijason.github.io/2019/11/20/回溯系列详解/</a>
+          <a href="https://caicaijason.github.io/2019/11/21/打家劫舍/" title="打家劫舍" target="_blank">https://caicaijason.github.io/2019/11/21/打家劫舍/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -395,11 +356,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回溯</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -455,7 +416,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caicaijason.github.io/2019/11/20/回溯系列详解/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caicaijason.github.io/2019/11/21/打家劫舍/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -470,18 +431,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/11/21/打家劫舍/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          打家劫舍
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/10/10/863-二叉树中所有距离为K的结点/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">863-二叉树中所有距离为 K 的结点</div>
+    <a href="/2019/11/20/回溯系列详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">回溯系列详解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -508,7 +460,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#回溯系列详解"><span class="toc-number">1.</span> <span class="toc-text">回溯系列详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#78-子集"><span class="toc-number">1.1.</span> <span class="toc-text">78. 子集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#90-子集-II"><span class="toc-number">1.2.</span> <span class="toc-text">90. 子集 II</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#39-组合总和"><span class="toc-number">1.3.</span> <span class="toc-text">39. 组合总和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#40-组合总和-II"><span class="toc-number">1.4.</span> <span class="toc-text">40. 组合总和 II</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-number">1.4.1.</span> <span class="toc-text">思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#216-组合总和-III"><span class="toc-number">1.5.</span> <span class="toc-text">216. 组合总和 III</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路-1"><span class="toc-number">1.5.1.</span> <span class="toc-text">思路</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#198-打家劫舍"><span class="toc-number">1.</span> <span class="toc-text">198. 打家劫舍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-number">1.1.</span> <span class="toc-text">思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#213-打家劫舍-II"><span class="toc-number">2.</span> <span class="toc-text">213. 打家劫舍 II</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路-1"><span class="toc-number">2.1.</span> <span class="toc-text">思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#337-打家劫舍-III"><span class="toc-number">3.</span> <span class="toc-text">337. 打家劫舍 III</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路-2"><span class="toc-number">3.1.</span> <span class="toc-text">思路</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -521,7 +473,7 @@
 
 
 
-<div id="SOHUCS" sid="回溯系列详解" ></div> 
+<div id="SOHUCS" sid="打家劫舍" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
