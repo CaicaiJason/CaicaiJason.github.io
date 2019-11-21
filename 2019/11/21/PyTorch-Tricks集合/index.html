@@ -6,21 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://caicaijason.github.io">
-  <title>Tag: DP | Jason</title>
+  <title>PyTorch Tricks集合 | Jason</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="I&apos;m Jason">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jason">
-<meta property="og:url" content="https://caicaijason.github.io/tags/DP/index.html">
+  <meta name="description" content="pytorch_tricks目录： 指定GPU编号查看模型每层输出详情梯度裁剪扩展单张图片维度独热编码防止验证模型时爆显存学习率衰减冻结某些层的参数对不同层使用不同学习率模型相关操作Pytorch内置one hot函数">
+<meta name="keywords" content="PyTorch,深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyTorch Tricks集合">
+<meta property="og:url" content="https://caicaijason.github.io/2019/11/21/PyTorch-Tricks集合/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="I&apos;m Jason">
+<meta property="og:description" content="pytorch_tricks目录： 指定GPU编号查看模型每层输出详情梯度裁剪扩展单张图片维度独热编码防止验证模型时爆显存学习率衰减冻结某些层的参数对不同层使用不同学习率模型相关操作Pytorch内置one hot函数">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-21T09:18:07.971Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jason">
-<meta name="twitter:description" content="I&apos;m Jason">
+<meta name="twitter:title" content="PyTorch Tricks集合">
+<meta name="twitter:description" content="pytorch_tricks目录： 指定GPU编号查看模型每层输出详情梯度裁剪扩展单张图片维度独热编码防止验证模型时爆显存学习率衰减冻结某些层的参数对不同层使用不同学习率模型相关操作Pytorch内置one hot函数">
   
     <link rel="alternative" href="/atom.xml" title="Jason" type="application/atom+xml">
   
@@ -191,73 +192,447 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-PyTorch-Tricks集合" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/08/leetcode523/" class="archive-article-date">
-        <time datetime="2019-10-08T01:29:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/08/leetcode523/">leetcode523 连续的子数组和</a>
-	
+    <h1 class="article-title" itemprop="name">
+      PyTorch Tricks集合
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/11/21/PyTorch-Tricks集合/" class="archive-article-date">
+        <time datetime="2019-11-21T08:28:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">3.9k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">17分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="pytorch-tricks"><a href="#pytorch-tricks" class="headerlink" title="pytorch_tricks"></a>pytorch_tricks</h2><h3 id="目录："><a href="#目录：" class="headerlink" title="目录："></a>目录：</h3><blockquote>
+<p>指定GPU编号<br>查看模型每层输出详情<br>梯度裁剪<br>扩展单张图片维度<br>独热编码<br>防止验证模型时爆显存<br>学习率衰减<br>冻结某些层的参数<br>对不同层使用不同学习率<br>模型相关操作<br>Pytorch内置one hot函数  </p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="1、指定GPU编号"><a href="#1、指定GPU编号" class="headerlink" title="1、指定GPU编号"></a>1、指定GPU编号</h2><ul>
+<li>设置当前使用的GPU设备仅为0号设备，设备名称为<br><code>/gpu:0：os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = &quot;0&quot;</code></li>
+<li>设置当前使用的GPU设备为0,1号两个设备，名称依次为<code>/gpu:0、/gpu:1：os.environ[&quot;CUDA_VISIBLE_DEVICES&quot;] = &quot;0,1&quot;</code>，根据顺序表示优先使用0号设备,然后使用1号设备。  </li>
+</ul>
+<p>指定GPU的命令需要放在和神经网络相关的一系列操作的前面。</p>
+<h2 id="2、查看模型每层输出详情"><a href="#2、查看模型每层输出详情" class="headerlink" title="2、查看模型每层输出详情"></a>2、查看模型每层输出详情</h2><p>Keras有一个简洁的API来查看模型的每一层输出尺寸，这在调试网络时非常有用。现在在PyTorch中也可以实现这个功能。<br>使用很简单，如下用法：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torchsummary <span class="keyword">import</span> summary</span><br><span class="line">summary(your_model, input_size=(channels, H, W))</span><br></pre></td></tr></table></figure>
+
+<p><code>input_size</code>是根据你自己的网络模型的输入尺寸进行设置。</p>
+<h2 id="3、梯度裁剪（Gradient-Clipping）"><a href="#3、梯度裁剪（Gradient-Clipping）" class="headerlink" title="3、梯度裁剪（Gradient Clipping）"></a>3、梯度裁剪（Gradient Clipping）</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line">outputs = model(data)</span><br><span class="line">loss= loss_fn(outputs, target)</span><br><span class="line">optimizer.zero_grad()</span><br><span class="line">loss.backward()</span><br><span class="line">nn.utils.clip_grad_norm_(model.parameters(), max_norm=<span class="number">20</span>, norm_type=<span class="number">2</span>)</span><br><span class="line">optimizer.step()</span><br></pre></td></tr></table></figure>
+
+<p><code>nn.utils.clip_grad_norm_</code>的参数：</p>
+<ul>
+<li>parameters – 一个基于变量的迭代器，会进行梯度归一化</li>
+<li>max_norm – 梯度的最大范数</li>
+<li>norm_type – 规定范数的类型，默认为L2</li>
+</ul>
+<h2 id="4、扩展单张图片维度"><a href="#4、扩展单张图片维度" class="headerlink" title="4、扩展单张图片维度"></a>4、扩展单张图片维度</h2><p>因为在训练时的数据维度一般都是<code>(batch_size, c, h, w)</code>，而在测试时只输入一张图片，所以需要扩展维度，扩展维度有多个方法：</p>
+<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a><strong>方法一</strong></h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">image = cv2.imread(img_path)</span><br><span class="line">image = torch.tensor(image)</span><br><span class="line">print(image.size())</span><br><span class="line"></span><br><span class="line">img = image.view(<span class="number">1</span>, *image.size())</span><br><span class="line">print(img.size())</span><br><span class="line"></span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line"><span class="comment"># torch.Size([h, w, c])</span></span><br><span class="line"><span class="comment"># torch.Size([1, h, w, c])</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a><strong>方法二</strong></h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">image = cv2.imread(img_path)</span><br><span class="line">print(image.shape)</span><br><span class="line">img = image[np.newaxis, :, :, :]</span><br><span class="line">print(img.shape)</span><br><span class="line"></span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line"><span class="comment"># (h, w, c)</span></span><br><span class="line"><span class="comment"># (1, h, w, c)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a><strong>方法三</strong></h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">image = cv2.imread(img_path)</span><br><span class="line">image = torch.tensor(image)</span><br><span class="line">print(image.size())</span><br><span class="line"></span><br><span class="line">img = image.unsqueeze(dim=<span class="number">0</span>)</span><br><span class="line">print(img.size())</span><br><span class="line"></span><br><span class="line">img = img.squeeze(dim=<span class="number">0</span>)</span><br><span class="line">print(img.size())</span><br><span class="line"></span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line"><span class="comment"># torch.Size([(h, w, c)])</span></span><br><span class="line"><span class="comment"># torch.Size([1, h, w, c])</span></span><br><span class="line"><span class="comment"># torch.Size([h, w, c])</span></span><br></pre></td></tr></table></figure>
+
+<p><code>tensor.unsqueeze(dim)</code>：扩展维度，dim指定扩展哪个维度。<br><code>tensor.squeeze(dim)</code>：去除dim指定的且size为1的维度，维度大于1时，squeeze()不起作用，不指定dim时，去除所有size为1的维度。</p>
+<h2 id="5、独热编码"><a href="#5、独热编码" class="headerlink" title="5、独热编码"></a>5、独热编码</h2><p>在PyTorch中使用交叉熵损失函数的时候会自动把label转化成onehot，所以不用手动转化，而使用MSE需要手动转化成onehot编码。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">class_num = <span class="number">8</span></span><br><span class="line">batch_size = <span class="number">4</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">one_hot</span><span class="params">(label)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    将一维列表转换为独热编码</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    label = label.resize_(batch_size, <span class="number">1</span>)</span><br><span class="line">    m_zeros = torch.zeros(batch_size, class_num)</span><br><span class="line">    <span class="comment"># 从 value 中取值，然后根据 dim 和 index 给相应位置赋值</span></span><br><span class="line">    onehot = m_zeros.scatter_(<span class="number">1</span>, label, <span class="number">1</span>)  <span class="comment"># (dim,index,value)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> onehot.numpy()  <span class="comment"># Tensor -&gt; Numpy</span></span><br><span class="line"></span><br><span class="line">label = torch.LongTensor(batch_size).random_() % class_num  <span class="comment"># 对随机数取余</span></span><br><span class="line">print(one_hot(label))</span><br><span class="line"></span><br><span class="line"><span class="comment"># output:</span></span><br><span class="line">[[<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]</span><br><span class="line"> [<span class="number">0.</span> <span class="number">1.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span> <span class="number">0.</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>注：第11条有更简单的方法。</p>
+<h2 id="6、防止验证模型时爆显存"><a href="#6、防止验证模型时爆显存" class="headerlink" title="6、防止验证模型时爆显存"></a>6、防止验证模型时爆显存</h2><p>验证模型时不需要求导，即不需要梯度计算，关闭autograd，可以提高速度，节约内存。如果不关闭可能会爆显存。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    <span class="comment"># 使用model进行预测的代码</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>Pytorch 训练时无用的临时变量可能会越来越多，导致 out of memory ，可以使用下面语句来清理这些不需要的变量。<br>官网 上的解释为：</p>
+<blockquote>
+<p>Releases all unoccupied cached memory currently held by the caching allocator so that those can be used in other GPU application and visible innvidia-smi. <code>torch.cuda.empty_cache()</code></p>
+</blockquote>
+<p>意思就是PyTorch的缓存分配器会事先分配一些固定的显存，即使实际上tensors并没有使用完这些显存，这些显存也不能被其他应用使用。这个分配过程由第一次CUDA内存访问触发的。<br>而 <code>torch.cuda.empty_cache()</code>的作用就是释放缓存分配器当前持有的且未占用的缓存显存，以便这些显存可以被其他GPU应用程序中使用，并且通过<code>nvidia-smi</code>命令可见。注意使用此命令不会释放tensors占用的显存。<br>对于不用的数据变量，Pytorch 可以自动进行回收从而释放相应的显存。</p>
+<h2 id="7、学习率衰减"><a href="#7、学习率衰减" class="headerlink" title="7、学习率衰减"></a>7、学习率衰减</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</span><br><span class="line"><span class="keyword">from</span> torch.optim <span class="keyword">import</span> lr_scheduler</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练前的初始化</span></span><br><span class="line">optimizer = optim.Adam(net.parameters(), lr=<span class="number">0.001</span>)</span><br><span class="line">scheduler = lr_scheduler.StepLR(optimizer, <span class="number">10</span>, <span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 训练过程中</span></span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> n_epoch:</span><br><span class="line">    scheduler.step()</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>关键语句为<code>lr_scheduler.StepLR(optimizer, 10, 0.1)</code>，表示每过10个epoch，学习率乘以0.1。</p>
+<h2 id="8、冻结某些层的参数"><a href="#8、冻结某些层的参数" class="headerlink" title="8、冻结某些层的参数"></a>8、冻结某些层的参数</h2><p>参考：Pytorch 冻结预训练模型的某一层(<a href="https://www.zhihu.com/question/311095447/answer/589307812" target="_blank" rel="noopener">https://www.zhihu.com/question/311095447/answer/589307812</a>)<br>在加载预训练模型的时候，我们有时想冻结前面几层，使其参数在训练过程中不发生变化。<br>我们需要先知道每一层的名字，通过如下代码打印：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net = Network()  <span class="comment"># 获取自定义网络结构</span></span><br><span class="line"><span class="keyword">for</span> name, value <span class="keyword">in</span> net.named_parameters():</span><br><span class="line">    print(<span class="string">'name: &#123;0&#125;,\t grad: &#123;1&#125;'</span>.format(name, value.requires_grad))</span><br></pre></td></tr></table></figure>
+
+<p>假设前几层信息如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">name: cnn.VGG_16.convolution1_1.weight,	 grad: <span class="literal">True</span></span><br><span class="line">name: cnn.VGG_16.convolution1_1.bias,	 grad: <span class="literal">True</span></span><br><span class="line">name: cnn.VGG_16.convolution1_2.weight,	 grad: <span class="literal">True</span></span><br><span class="line">name: cnn.VGG_16.convolution1_2.bias,	 grad: <span class="literal">True</span></span><br><span class="line">name: cnn.VGG_16.convolution2_1.weight,	 grad: <span class="literal">True</span></span><br><span class="line">name: cnn.VGG_16.convolution2_1.bias,	 grad: <span class="literal">True</span></span><br><span class="line">name: cnn.VGG_16.convolution2_2.weight,	 grad: <span class="literal">True</span></span><br><span class="line">name: cnn.VGG_16.convolution2_2.bias,	 grad: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>后面的True表示该层的参数可训练，然后我们定义一个要冻结的层的列表：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">no_grad = [</span><br><span class="line">    <span class="string">'cnn.VGG_16.convolution1_1.weight'</span>,</span><br><span class="line">    <span class="string">'cnn.VGG_16.convolution1_1.bias'</span>,</span><br><span class="line">    <span class="string">'cnn.VGG_16.convolution1_2.weight'</span>,</span><br><span class="line">    <span class="string">'cnn.VGG_16.convolution1_2.bias'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>冻结方法如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">net = Net.CTPN()  <span class="comment"># 获取网络结构</span></span><br><span class="line"><span class="keyword">for</span> name, value <span class="keyword">in</span> net.named_parameters():</span><br><span class="line">    <span class="keyword">if</span> name <span class="keyword">in</span> no_grad:</span><br><span class="line">        value.requires_grad = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        value.requires_grad = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>冻结后我们再打印每层的信息：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">name: cnn.VGG_16.convolution1_1.weight,	 grad: <span class="literal">False</span></span><br><span class="line">name: cnn.VGG_16.convolution1_1.bias,	 grad: <span class="literal">False</span></span><br><span class="line">name: cnn.VGG_16.convolution1_2.weight,	 grad: <span class="literal">False</span></span><br><span class="line">name: cnn.VGG_16.convolution1_2.bias,	 grad: <span class="literal">False</span></span><br><span class="line">name: cnn.VGG_16.convolution2_1.weight,	 grad: <span class="literal">True</span></span><br><span class="line">name: cnn.VGG_16.convolution2_1.bias,	 grad: <span class="literal">True</span></span><br><span class="line">name: cnn.VGG_16.convolution2_2.weight,	 grad: <span class="literal">True</span></span><br><span class="line">name: cnn.VGG_16.convolution2_2.bias,	 grad: <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到前两层的weight和bias的<code>requires_grad</code>都为False，表示它们不可训练。<br>最后在定义优化器时，只对requires_grad为True的层的参数进行更新。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optimizer = optim.Adam(filter(<span class="keyword">lambda</span> p: p.requires_grad, net.parameters()), lr=<span class="number">0.01</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="9、对不同层使用不同学习率"><a href="#9、对不同层使用不同学习率" class="headerlink" title="9、对不同层使用不同学习率"></a>9、对不同层使用不同学习率</h2><p>我们对模型的不同层使用不同的学习率。<br>还是使用这个模型作为例子：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">net = Network()  <span class="comment"># 获取自定义网络结构</span></span><br><span class="line"><span class="keyword">for</span> name, value <span class="keyword">in</span> net.named_parameters():</span><br><span class="line">    print(<span class="string">'name: &#123;&#125;'</span>.format(name))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="comment"># name: cnn.VGG_16.convolution1_1.weight</span></span><br><span class="line"><span class="comment"># name: cnn.VGG_16.convolution1_1.bias</span></span><br><span class="line"><span class="comment"># name: cnn.VGG_16.convolution1_2.weight</span></span><br><span class="line"><span class="comment"># name: cnn.VGG_16.convolution1_2.bias</span></span><br><span class="line"><span class="comment"># name: cnn.VGG_16.convolution2_1.weight</span></span><br><span class="line"><span class="comment"># name: cnn.VGG_16.convolution2_1.bias</span></span><br><span class="line"><span class="comment"># name: cnn.VGG_16.convolution2_2.weight</span></span><br><span class="line"><span class="comment"># name: cnn.VGG_16.convolution2_2.bias</span></span><br></pre></td></tr></table></figure>
+
+<p>对 convolution1 和 convolution2 设置不同的学习率，首先将它们分开，即放到不同的列表里：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">conv1_params = []</span><br><span class="line">conv2_params = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name, parms <span class="keyword">in</span> net.named_parameters():</span><br><span class="line">    <span class="keyword">if</span> <span class="string">"convolution1"</span> <span class="keyword">in</span> name:</span><br><span class="line">        conv1_params += [parms]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        conv2_params += [parms]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后在优化器中进行如下操作：</span></span><br><span class="line">optimizer = optim.Adam(</span><br><span class="line">    [</span><br><span class="line">        &#123;<span class="string">"params"</span>: conv1_params, <span class="string">'lr'</span>: <span class="number">0.01</span>&#125;,</span><br><span class="line">        &#123;<span class="string">"params"</span>: conv2_params, <span class="string">'lr'</span>: <span class="number">0.001</span>&#125;,</span><br><span class="line">    ],</span><br><span class="line">    weight_decay=<span class="number">1e-3</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>我们将模型划分为两部分，存放到一个列表里，每部分就对应上面的一个字典，在字典里设置不同的学习率。当这两部分有相同的其他参数时，就将该参数放到列表外面作为全局参数，如上面的<code>weight_decay</code>。<br>也可以在列表外设置一个全局学习率，当各部分字典里设置了局部学习率时，就使用该学习率，否则就使用列表外的全局学习率。</p>
+<h2 id="10、模型相关操作"><a href="#10、模型相关操作" class="headerlink" title="10、模型相关操作"></a>10、模型相关操作</h2><p>PyTorch 中模型的使用参考(<a href="https://zhuanlan.zhihu.com/p/73893187" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/73893187</a>)</p>
+<h3 id="一、保存加载模型基本用法"><a href="#一、保存加载模型基本用法" class="headerlink" title="一、保存加载模型基本用法"></a>一、保存加载模型基本用法</h3><h4 id="1-保存加载整个模型"><a href="#1-保存加载整个模型" class="headerlink" title="(1) 保存加载整个模型"></a>(1) 保存加载整个模型</h4><p>保存整个网络模型（网络结构+权重参数）。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.save(model, <span class="string">'net.pkl'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>直接加载整个网络模型（可能比较耗时）。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = torch.load(<span class="string">'net.pkl'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-只保存加载模型参数"><a href="#2-只保存加载模型参数" class="headerlink" title="(2) 只保存加载模型参数"></a>(2) 只保存加载模型参数</h4><p>只保存模型的权重参数（速度快，占内存少）。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.save(model.state_dict(), <span class="string">'net_params.pkl'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>因为我们只保存了模型的参数，所以需要先定义一个网络对象，然后再加载模型参数。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构建一个网络结构</span></span><br><span class="line">model = ClassNet()</span><br><span class="line"><span class="comment"># 将模型参数加载到新模型中</span></span><br><span class="line">state_dict = torch.load(<span class="string">'net_params.pkl'</span>)</span><br><span class="line">model.load_state_dict(state_dict)</span><br></pre></td></tr></table></figure>
+
+<p>保存模型进行推理测试时，只需保存训练好的模型的权重参数，即<code>推荐第二种方法</code>。</p>
+<p>主要用法就是上面这些，接下来讲一下PyTorch中保存加载模型内部的一些原理，以及我们可能会遇到的一些特殊的需求。</p>
+<h3 id="二、保存加载自定义模型"><a href="#二、保存加载自定义模型" class="headerlink" title="二、保存加载自定义模型"></a>二、保存加载自定义模型</h3><p>上面保存加载的 net.pkl 其实一个字典，通常包含如下内容：</p>
+<ul>
+<li><strong>网络结构</strong>：输入尺寸、输出尺寸以及隐藏层信息，以便能够在加载时重建模型。</li>
+<li><strong>模型的权重参数</strong>：包含各网络层训练后的可学习参数，可以在模型实例上调用 <code>state_dict()</code> 方法来获取，比如前面介绍只保存模型权重参数时用到的 <code>model.state_dict()</code>。</li>
+<li><strong>优化器参数</strong>：有时保存模型的参数需要稍后接着训练，那么就必须保存优化器的状态和所其使用的超参数，也是在优化器实例上调用 state_dict() 方法来获取这些参数。</li>
+<li><strong>其他信息</strong>：有时我们需要保存一些其他的信息，比如 epoch，batch_size 等超参数。</li>
+</ul>
+<p>知道了这些，那么我们就可以自定义需要保存的内容，比如：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># saving a checkpoint assuming the network class named ClassNet</span></span><br><span class="line">checkpoint = &#123;<span class="string">'model'</span>: ClassNet(),</span><br><span class="line">              <span class="string">'model_state_dict'</span>: model.state_dict(),</span><br><span class="line">              <span class="string">'optimizer_state_dict'</span>: optimizer.state_dict(),</span><br><span class="line">              <span class="string">'epoch'</span>: epoch&#125;</span><br><span class="line">​</span><br><span class="line">torch.save(checkpoint, <span class="string">'checkpoint.pkl'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>上面的 checkpoint 是个字典，里面有4个键值对，分别表示网络模型的不同信息。</p>
+<p>然后我们要加载上面保存的自定义的模型：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_checkpoint</span><span class="params">(filepath)</span>:</span></span><br><span class="line">    checkpoint = torch.load(filepath)</span><br><span class="line">    model = checkpoint[<span class="string">'model'</span>]  <span class="comment"># 提取网络结构</span></span><br><span class="line">    model.load_state_dict(checkpoint[<span class="string">'model_state_dict'</span>])  <span class="comment"># 加载网络权重参数</span></span><br><span class="line">    optimizer = TheOptimizerClass()</span><br><span class="line">    optimizer.load_state_dict(checkpoint[<span class="string">'optimizer_state_dict'</span>])  <span class="comment"># 加载优化器参数</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> parameter <span class="keyword">in</span> model.parameters():</span><br><span class="line">        parameter.requires_grad = <span class="literal">False</span></span><br><span class="line">    model.eval()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> model</span><br><span class="line">    </span><br><span class="line">model = load_checkpoint(<span class="string">'checkpoint.pkl'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果加载模型只是为了进行推理测试，则将每一层的 <code>requires_grad</code> 置为 False，即固定这些权重参数；还需要调用 <code>model.eval()</code>将模型置为测试模式，主要是将 dropout 和 batch normalization 层进行固定，否则模型的预测结果每次都会不同。</p>
+<p>如果希望继续训练，则调用<code>model.train()</code>，以确保网络模型处于训练模式。</p>
+<p><code>state_dict()</code>也是一个Python字典对象，<code>model.state_dict()</code> 将每一层的可学习参数映射为参数矩阵，其中只包含具有可学习参数的层(卷积层、全连接层等)。</p>
+<p>比如下面这个例子：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define model</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TheModelClass</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(TheModelClass, self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(<span class="number">3</span>, <span class="number">8</span>, <span class="number">5</span>)</span><br><span class="line">        self.bn = nn.BatchNorm2d(<span class="number">8</span>)</span><br><span class="line">        self.conv2 = nn.Conv2d(<span class="number">8</span>, <span class="number">16</span>, <span class="number">5</span>)</span><br><span class="line">        self.pool = nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">        self.fc1 = nn.Linear(<span class="number">16</span> * <span class="number">5</span> * <span class="number">5</span>, <span class="number">120</span>)</span><br><span class="line">        self.fc2 = nn.Linear(<span class="number">120</span>, <span class="number">10</span>)</span><br><span class="line">​</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.pool(F.relu(self.conv1(x)))</span><br><span class="line">        x = self.bn(x)</span><br><span class="line">        x = self.pool(F.relu(self.conv2(x)))</span><br><span class="line">        x = x.view(<span class="number">-1</span>, <span class="number">16</span> * <span class="number">5</span> * <span class="number">5</span>)</span><br><span class="line">        x = F.relu(self.fc1(x))</span><br><span class="line">        x = F.relu(self.fc2(x))</span><br><span class="line">        x = self.fc3(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Initialize model</span></span><br><span class="line">    model = TheModelClass()</span><br><span class="line">​</span><br><span class="line">    <span class="comment"># Initialize optimizer</span></span><br><span class="line">    optimizer = optim.SGD(model.parameters(), lr=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>)</span><br><span class="line">​</span><br><span class="line">    print(<span class="string">"Model's state_dict:"</span>)</span><br><span class="line">    <span class="keyword">for</span> param_tensor <span class="keyword">in</span> model.state_dict():</span><br><span class="line">        print(param_tensor, <span class="string">"\t"</span>, model.state_dict()[param_tensor].size())</span><br><span class="line">​</span><br><span class="line">    print(<span class="string">"Optimizer's state_dict:"</span>)</span><br><span class="line">    <span class="keyword">for</span> var_name <span class="keyword">in</span> optimizer.state_dict():</span><br><span class="line">        print(var_name, <span class="string">"\t"</span>, optimizer.state_dict()[var_name])</span><br></pre></td></tr></table></figure>
+
+<p>输出为：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Model<span class="string">'s state_dict:</span></span><br><span class="line"><span class="string">conv1.weight            torch.Size([8, 3, 5, 5])</span></span><br><span class="line"><span class="string">conv1.bias              torch.Size([8])</span></span><br><span class="line"><span class="string">bn.weight               torch.Size([8])</span></span><br><span class="line"><span class="string">bn.bias                 torch.Size([8])</span></span><br><span class="line"><span class="string">bn.running_mean         torch.Size([8])</span></span><br><span class="line"><span class="string">bn.running_var          torch.Size([8])</span></span><br><span class="line"><span class="string">bn.num_batches_tracked  torch.Size([])</span></span><br><span class="line"><span class="string">conv2.weight            torch.Size([16, 8, 5, 5])</span></span><br><span class="line"><span class="string">conv2.bias              torch.Size([16])</span></span><br><span class="line"><span class="string">fc1.weight              torch.Size([120, 400])</span></span><br><span class="line"><span class="string">fc1.bias                torch.Size([120])</span></span><br><span class="line"><span class="string">fc2.weight              torch.Size([10, 120])</span></span><br><span class="line"><span class="string">fc2.bias                torch.Size([10])</span></span><br><span class="line"><span class="string">Optimizer'</span>s state_dict:</span><br><span class="line">state            &#123;&#125;</span><br><span class="line">param_groups     [&#123;<span class="string">'lr'</span>: <span class="number">0.001</span>, <span class="string">'momentum'</span>: <span class="number">0.9</span>, <span class="string">'dampening'</span>: <span class="number">0</span>, <span class="string">'weight_decay'</span>: <span class="number">0</span>, <span class="string">'nesterov'</span>: <span class="literal">False</span>, <span class="string">'params'</span>: [<span class="number">139805696932024</span>, <span class="number">139805483616008</span>, <span class="number">139805483616080</span>, <span class="number">139805483616152</span>, <span class="number">139805483616440</span>, <span class="number">139805483616512</span>, <span class="number">139805483616584</span>, <span class="number">139805483616656</span>, <span class="number">139805483616728</span>, <span class="number">139805483616800</span>]&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 <code>model.state_dict()</code>保存了卷积层，BatchNorm层和最大池化层的信息；而 <code>optimizer.state_dict()</code> 则保存的优化器的状态和相关的超参数。</p>
+<h3 id="三、跨设备保存加载模型"><a href="#三、跨设备保存加载模型" class="headerlink" title="三、跨设备保存加载模型"></a>三、跨设备保存加载模型</h3><h4 id="1-在-CPU-上加载在-GPU-上训练并保存的模型（Save-on-GPU-Load-on-CPU）："><a href="#1-在-CPU-上加载在-GPU-上训练并保存的模型（Save-on-GPU-Load-on-CPU）：" class="headerlink" title="(1) 在 CPU 上加载在 GPU 上训练并保存的模型（Save on GPU, Load on CPU）："></a>(1) 在 CPU 上加载在 GPU 上训练并保存的模型（Save on GPU, Load on CPU）：</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">device = torch.device(<span class="string">'cpu'</span>)</span><br><span class="line">model = TheModelClass()</span><br><span class="line"><span class="comment"># Load all tensors onto the CPU device</span></span><br><span class="line">model.load_state_dict(torch.load(<span class="string">'net_params.pkl'</span>, map_location=device))</span><br></pre></td></tr></table></figure>
+
+<p><code>map_location</code>：a function, torch.device, string or a dict specifying how to remap storage locations</p>
+<p>令 <code>torch.load()</code> 函数的 <code>map_location</code> 参数等于<code>torch.device(&#39;cpu&#39;)</code>即可。 这里令<code>map_location</code>参数等于 ‘cpu’ 也同样可以。</p>
+<h4 id="2-在-GPU-上加载在-GPU-上训练并保存的模型（Save-on-GPU-Load-on-GPU）："><a href="#2-在-GPU-上加载在-GPU-上训练并保存的模型（Save-on-GPU-Load-on-GPU）：" class="headerlink" title="(2) 在 GPU 上加载在 GPU 上训练并保存的模型（Save on GPU, Load on GPU）："></a>(2) 在 GPU 上加载在 GPU 上训练并保存的模型（Save on GPU, Load on GPU）：</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">device = torch.device(<span class="string">"cuda"</span>)</span><br><span class="line">model = TheModelClass()</span><br><span class="line">model.load_state_dict(torch.load(<span class="string">'net_params.pkl'</span>))</span><br><span class="line">model.to(device)</span><br></pre></td></tr></table></figure>
+
+<p>在这里使用 <code>map_location</code>参数不起作用，要使用<code>model.to(torch.device(&quot;cuda&quot;))</code> 将模型转换为CUDA优化的模型。</p>
+<p>还需要对将要输入模型的数据调用 <code>data = data.to(device)</code>，即将数据从CPU转移到GPU。请注意，调用 <code>my_tensor.to(device)</code> 会返回一个<code>my_tensor</code>在 GPU 上的副本，它不会覆盖 <code>my_tensor</code>。因此需要手动覆盖张量：<code>my_tensor = my_tensor.to(device)</code>。</p>
+<h4 id="3-在-GPU-上加载在-GPU-上训练并保存的模型（Save-on-CPU-Load-on-GPU）"><a href="#3-在-GPU-上加载在-GPU-上训练并保存的模型（Save-on-CPU-Load-on-GPU）" class="headerlink" title="(3) 在 GPU 上加载在 GPU 上训练并保存的模型（Save on CPU, Load on GPU）"></a>(3) 在 GPU 上加载在 GPU 上训练并保存的模型（Save on CPU, Load on GPU）</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">device = torch.device(<span class="string">"cuda"</span>)</span><br><span class="line">model = TheModelClass()</span><br><span class="line">model.load_state_dict(torch.load(<span class="string">'net_params.pkl'</span>, map_location=<span class="string">"cuda:0"</span>))</span><br><span class="line">model.to(device)</span><br></pre></td></tr></table></figure>
+
+<p>当加载包含GPU tensors的模型时，这些tensors 会被默认加载到GPU上，不过是同一个GPU设备。</p>
+<p>当有多个GPU设备时，可以通过将<code>map_location</code>设定为 <code>cuda:device_id</code> 来指定使用哪一个GPU设备，上面例子是指定编号为0的GPU设备。</p>
+<p>其实也可以将<code>torch.device(&quot;cuda&quot;)</code>改为 <code>torch.device(&quot;cuda:0&quot;)</code>来指定编号为0的GPU设备。</p>
+<p>最后调用 <code>model.to(torch.device(&#39;cuda&#39;))</code> 来将模型的tensors转换为 CUDA tensors。</p>
+<p>下面是PyTorch官方文档上的用法，可以进行参考：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.load(<span class="string">'tensors.pt'</span>)</span><br><span class="line"><span class="comment"># Load all tensors onto the CPU</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.load(<span class="string">'tensors.pt'</span>, map_location=torch.device(<span class="string">'cpu'</span>))</span><br><span class="line"><span class="comment"># Load all tensors onto the CPU, using a function</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.load(<span class="string">'tensors.pt'</span>, map_location=<span class="keyword">lambda</span> storage, loc: storage)</span><br><span class="line"><span class="comment"># Load all tensors onto GPU 1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.load(<span class="string">'tensors.pt'</span>, map_location=<span class="keyword">lambda</span> storage, loc: storage.cuda(<span class="number">1</span>))</span><br><span class="line"><span class="comment"># Map tensors from GPU 1 to GPU 0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.load(<span class="string">'tensors.pt'</span>, map_location=&#123;<span class="string">'cuda:1'</span>:<span class="string">'cuda:0'</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、CUDA-的用法"><a href="#四、CUDA-的用法" class="headerlink" title="四、CUDA 的用法"></a>四、CUDA 的用法</h3><p>在PyTorch中和GPU相关的几个函数：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断cuda是否可用；</span></span><br><span class="line">print(torch.cuda.is_available())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取gpu数量；</span></span><br><span class="line">print(torch.cuda.device_count())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取gpu名字；</span></span><br><span class="line">print(torch.cuda.get_device_name(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回当前gpu设备索引，默认从0开始；</span></span><br><span class="line">print(torch.cuda.current_device())</span><br></pre></td></tr></table></figure>
+
+<p>输出为：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line">GeForce RTX <span class="number">2080</span> Ti</span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>有时我们需要把数据和模型从cpu移到gpu中，有以下两种方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">use_cuda = torch.cuda.is_available()</span><br><span class="line"></span><br><span class="line"># 方法一：</span><br><span class="line">if use_cuda:</span><br><span class="line">    data = data.cuda()</span><br><span class="line">    model.cuda()</span><br><span class="line"></span><br><span class="line"># 方法二：</span><br><span class="line">device = torch.device(&quot;cuda&quot; if use_cuda else &quot;cpu&quot;)</span><br><span class="line">data = data.to(device)</span><br><span class="line">model.to(device)</span><br></pre></td></tr></table></figure>
+
+<p>个人比较习惯第二种方法，可以少一个 if 语句。而且该方法还可以通过设备号指定使用哪个GPU设备，比如使用0号设备：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">device = torch.device(&quot;cuda:0&quot; if use_cuda else &quot;cpu&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="11、Pytorch内置one-hot函数"><a href="#11、Pytorch内置one-hot函数" class="headerlink" title="11、Pytorch内置one_hot函数"></a>11、Pytorch内置one_hot函数</h2><p>Pytorch 1.1后，one_hot可以直接用<code>torch.nn.functional.one_hot</code>。然后我将Pytorch升级到1.2版本，试用了下 one_hot 函数，确实很方便。<br>具体用法如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">tensor =  torch.arange(<span class="number">0</span>, <span class="number">5</span>) % <span class="number">3</span>  <span class="comment"># tensor([0, 1, 2, 0, 1])</span></span><br><span class="line">one_hot = F.one_hot(tensor)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="comment"># tensor([[1, 0, 0],</span></span><br><span class="line"><span class="comment">#         [0, 1, 0],</span></span><br><span class="line"><span class="comment">#         [0, 0, 1],</span></span><br><span class="line"><span class="comment">#         [1, 0, 0],</span></span><br><span class="line"><span class="comment">#         [0, 1, 0]])</span></span><br></pre></td></tr></table></figure>
+
+<p><code>F.one_hot</code>会自己检测不同类别个数，生成对应独热编码。我们也可以自己强行指定类别数：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tensor =  torch.arange(<span class="number">0</span>, <span class="number">5</span>) % <span class="number">3</span>  <span class="comment"># tensor([0, 1, 2, 0, 1])</span></span><br><span class="line">one_hot = F.one_hot(tensor, num_classes=<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="comment"># tensor([[1, 0, 0, 0, 0],</span></span><br><span class="line"><span class="comment">#         [0, 1, 0, 0, 0],</span></span><br><span class="line"><span class="comment">#         [0, 0, 1, 0, 0],</span></span><br><span class="line"><span class="comment">#         [1, 0, 0, 0, 0],</span></span><br><span class="line"><span class="comment">#         [0, 1, 0, 0, 0]])</span></span><br></pre></td></tr></table></figure>
+
+<p>升级 Pytorch (cpu版本)的命令：<code>conda install pytorch torchvision -c pytorch</code>（希望Pytorch升级不会影响项目代码）</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/wechatpay.jpg">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Jason
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://caicaijason.github.io/2019/11/21/PyTorch-Tricks集合/" title="PyTorch Tricks集合" target="_blank">https://caicaijason.github.io/2019/11/21/PyTorch-Tricks集合/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">PyTorch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caicaijason.github.io/2019/11/21/PyTorch-Tricks集合/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/21/子集/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">子集</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#pytorch-tricks"><span class="toc-number">1.</span> <span class="toc-text">pytorch_tricks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#目录："><span class="toc-number">1.1.</span> <span class="toc-text">目录：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、指定GPU编号"><span class="toc-number">2.</span> <span class="toc-text">1、指定GPU编号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、查看模型每层输出详情"><span class="toc-number">3.</span> <span class="toc-text">2、查看模型每层输出详情</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、梯度裁剪（Gradient-Clipping）"><span class="toc-number">4.</span> <span class="toc-text">3、梯度裁剪（Gradient Clipping）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、扩展单张图片维度"><span class="toc-number">5.</span> <span class="toc-text">4、扩展单张图片维度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-number">5.1.</span> <span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二"><span class="toc-number">5.2.</span> <span class="toc-text">方法二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法三"><span class="toc-number">5.3.</span> <span class="toc-text">方法三</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、独热编码"><span class="toc-number">6.</span> <span class="toc-text">5、独热编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、防止验证模型时爆显存"><span class="toc-number">7.</span> <span class="toc-text">6、防止验证模型时爆显存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7、学习率衰减"><span class="toc-number">8.</span> <span class="toc-text">7、学习率衰减</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8、冻结某些层的参数"><span class="toc-number">9.</span> <span class="toc-text">8、冻结某些层的参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9、对不同层使用不同学习率"><span class="toc-number">10.</span> <span class="toc-text">9、对不同层使用不同学习率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10、模型相关操作"><span class="toc-number">11.</span> <span class="toc-text">10、模型相关操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、保存加载模型基本用法"><span class="toc-number">11.1.</span> <span class="toc-text">一、保存加载模型基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-保存加载整个模型"><span class="toc-number">11.1.1.</span> <span class="toc-text">(1) 保存加载整个模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-只保存加载模型参数"><span class="toc-number">11.1.2.</span> <span class="toc-text">(2) 只保存加载模型参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、保存加载自定义模型"><span class="toc-number">11.2.</span> <span class="toc-text">二、保存加载自定义模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、跨设备保存加载模型"><span class="toc-number">11.3.</span> <span class="toc-text">三、跨设备保存加载模型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-在-CPU-上加载在-GPU-上训练并保存的模型（Save-on-GPU-Load-on-CPU）："><span class="toc-number">11.3.1.</span> <span class="toc-text">(1) 在 CPU 上加载在 GPU 上训练并保存的模型（Save on GPU, Load on CPU）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-在-GPU-上加载在-GPU-上训练并保存的模型（Save-on-GPU-Load-on-GPU）："><span class="toc-number">11.3.2.</span> <span class="toc-text">(2) 在 GPU 上加载在 GPU 上训练并保存的模型（Save on GPU, Load on GPU）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-在-GPU-上加载在-GPU-上训练并保存的模型（Save-on-CPU-Load-on-GPU）"><span class="toc-number">11.3.3.</span> <span class="toc-text">(3) 在 GPU 上加载在 GPU 上训练并保存的模型（Save on CPU, Load on GPU）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、CUDA-的用法"><span class="toc-number">11.4.</span> <span class="toc-text">四、CUDA 的用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11、Pytorch内置one-hot函数"><span class="toc-number">12.</span> <span class="toc-text">11、Pytorch内置one_hot函数</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+<div id="SOHUCS" sid="PyTorch-Tricks集合" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "true",
+        conf: "true"
+    });
+</script>
+</script>
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname =
+    'true'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+      Disqus.</a></noscript>
+</section>
+
+
+
+
+
+  
+  <div id="gitment-ctn"></div>
+  
+    <!-- 中文 -->
+    <link rel="stylesheet" href="/lib/gitment.css">
+    <script src="/lib/gitment.js"></script>
+  
+  <script>
+    <!-- id: "PyTorch Tricks集合" -->
+    var gitment = new Gitment({
+      id: "20191121162849",
+      owner: 'CaicaiJason',
+      repo: 'CaicaiJason.github.io',
+      oauth: {
+        client_id: 'f0ab28199c136cb9a083',
+        client_secret: '9ddeab3bd944cab6b75c7e2efd13a3d72f8c3ae3',
+      },
+    })
+    gitment.render('gitment-ctn')
+  </script>
+
+
+  
+
 
 
           </div>
@@ -298,9 +673,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
