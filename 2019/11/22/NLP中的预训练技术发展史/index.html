@@ -6,22 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://caicaijason.github.io">
-  <title>全排列 | Jason</title>
+  <title>NLP中的预训练技术发展史 | Jason</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="46. 全排列给定一个没有重复数字的序列，返回其所有可能的全排列。 示例: 12345678910输入: [1,2,3]输出:[  [1,2,3],  [1,3,2],  [2,1,3],  [2,3,1],  [3,1,2],  [3,2,1]]">
-<meta name="keywords" content="算法,回溯">
+  <meta name="description" content="[TOC] NLP中的预训练技术发展史本文参考从Word Embedding到Bert模型—自然语言处理中的预训练技术发展史 ，仅供学习。 从图像领域的预训练说起自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。 那么图像领域怎么做预训练呢？ 对于图像来说一般是CNN的多层叠加网络结构，可以先用某个训练集合比如训练集合A或者训练集合B对这个网络进行预先训练">
+<meta name="keywords" content="NLP,深度学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="全排列">
-<meta property="og:url" content="https://caicaijason.github.io/2019/11/21/全排列/index.html">
+<meta property="og:title" content="NLP中的预训练技术发展史">
+<meta property="og:url" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="46. 全排列给定一个没有重复数字的序列，返回其所有可能的全排列。 示例: 12345678910输入: [1,2,3]输出:[  [1,2,3],  [1,3,2],  [2,1,3],  [2,3,1],  [3,1,2],  [3,2,1]]">
+<meta property="og:description" content="[TOC] NLP中的预训练技术发展史本文参考从Word Embedding到Bert模型—自然语言处理中的预训练技术发展史 ，仅供学习。 从图像领域的预训练说起自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。 那么图像领域怎么做预训练呢？ 对于图像来说一般是CNN的多层叠加网络结构，可以先用某个训练集合比如训练集合A或者训练集合B对这个网络进行预先训练">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-21T08:03:47.328Z">
+<meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/word2vec.jpg">
+<meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/word2vec2.jpg">
+<meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/duoyici.jpg">
+<meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/elmo.jpg">
+<meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/elmo2.jpg">
+<meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/elmo3.jpg">
+<meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/bert.jpg">
+<meta property="og:updated_time" content="2019-11-22T03:25:12.560Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="全排列">
-<meta name="twitter:description" content="46. 全排列给定一个没有重复数字的序列，返回其所有可能的全排列。 示例: 12345678910输入: [1,2,3]输出:[  [1,2,3],  [1,3,2],  [2,1,3],  [2,3,1],  [3,1,2],  [3,2,1]]">
+<meta name="twitter:title" content="NLP中的预训练技术发展史">
+<meta name="twitter:description" content="[TOC] NLP中的预训练技术发展史本文参考从Word Embedding到Bert模型—自然语言处理中的预训练技术发展史 ，仅供学习。 从图像领域的预训练说起自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。 那么图像领域怎么做预训练呢？ 对于图像来说一般是CNN的多层叠加网络结构，可以先用某个训练集合比如训练集合A或者训练集合B对这个网络进行预先训练">
+<meta name="twitter:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/word2vec.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Jason" type="application/atom+xml">
   
@@ -204,14 +212,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-全排列" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-NLP中的预训练技术发展史" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      全排列
+      NLP中的预训练技术发展史
     </h1>
   
 
@@ -223,8 +231,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2019/11/21/全排列/" class="archive-article-date">
-        <time datetime="2019-11-21T07:53:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
+<a href="/2019/11/22/NLP中的预训练技术发展史/" class="archive-article-date">
+        <time datetime="2019-11-22T02:25:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
 </a>
 
   
@@ -237,7 +245,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">594字</span>
+      <span class="post-count">4.1k字</span>
     </span>
   </span>
 
@@ -246,7 +254,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">2分</span>
+      <span class="post-count">14分</span>
     </span>
   </span>
 </div>
@@ -257,30 +265,109 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="46-全排列"><a href="#46-全排列" class="headerlink" title="46. 全排列"></a>46. 全排列</h2><p>给定一个没有重复数字的序列，返回其所有可能的全排列。</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [1,3,2],</span><br><span class="line">  [2,1,3],</span><br><span class="line">  [2,3,1],</span><br><span class="line">  [3,1,2],</span><br><span class="line">  [3,2,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
-<li>回溯，详情见代码<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> []</span><br><span class="line">        res=[]</span><br><span class="line">        n=len(nums)</span><br><span class="line">        <span class="comment"># 使用vis数组保存访问过的元素</span></span><br><span class="line">        vis=[<span class="number">0</span>]*n</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(tmp_list)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> len(tmp_list)==n:</span><br><span class="line">                res.append(tmp_list)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="comment"># 访问过的直接跳过</span></span><br><span class="line">                <span class="keyword">if</span> vis[i]:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="comment"># 状态置为已访问，并将tmp_list加上当前元素继续递归</span></span><br><span class="line">                vis[i]=<span class="number">1</span></span><br><span class="line">                backtrack(tmp_list+[nums[i]])</span><br><span class="line">                <span class="comment"># 将访问状态初始化，才不会影响别的路径</span></span><br><span class="line">                vis[i]=<span class="number">0</span></span><br><span class="line">        backtrack([])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
+    <p>[TOC]</p>
+<h1 id="NLP中的预训练技术发展史"><a href="#NLP中的预训练技术发展史" class="headerlink" title="NLP中的预训练技术发展史"></a>NLP中的预训练技术发展史</h1><p>本文参考<a href="https://zhuanlan.zhihu.com/p/49271699" target="_blank" rel="noopener">从Word Embedding到Bert模型—自然语言处理中的预训练技术发展史
+</a>，仅供学习。</p>
+<h2 id="从图像领域的预训练说起"><a href="#从图像领域的预训练说起" class="headerlink" title="从图像领域的预训练说起"></a>从图像领域的预训练说起</h2><p>自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。</p>
+<h4 id="那么图像领域怎么做预训练呢？"><a href="#那么图像领域怎么做预训练呢？" class="headerlink" title="那么图像领域怎么做预训练呢？"></a>那么图像领域怎么做预训练呢？</h4><ul>
+<li>对于图像来说一般是CNN的多层叠加网络结构，可以先用某个训练集合比如训练集合A或者训练集合B对这个网络进行预先训练，在A任务上或者B任务上学会网络参数，然后存起来以备后用。</li>
+<li>假设我们面临第三个任务C，网络结构采取相同的网络结构，在比较浅的几层CNN结构，网络参数初始化的时候可以加载A任务或者B任务学习好的参数，其它CNN高层参数仍然随机初始化。</li>
+<li>之后我们用C任务的训练数据来训练网络，此时有两种做法:<ul>
+<li>一种是浅层加载的参数在训练C任务过程中不动，这种方法被称为<strong>“Frozen”</strong>;</li>
+<li>另外一种是底层网络参数尽管被初始化了，在C任务训练过程中仍然随着训练的进程不断改变，这种一般叫<strong>“Fine-Tuning”</strong>，顾名思义，就是更好地把参数进行调整使得更适应当前的C任务。一般图像或者视频领域要做预训练一般都这么做。</li>
+</ul>
 </li>
 </ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> []</span><br><span class="line">        res=[]</span><br><span class="line">        n=len(nums)</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">backtrack2</span><span class="params">(nums,tmp_list)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">                res.append(tmp_list)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">                <span class="comment"># 每次访问过后将i从nums中去除，节省了vis记录访问的空间</span></span><br><span class="line">                backtrack2(nums[:i]+nums[i+<span class="number">1</span>:],tmp_list+[nums[i]])</span><br><span class="line">        backtrack2(nums,[])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-<h2 id="47-全排列-II"><a href="#47-全排列-II" class="headerlink" title="47. 全排列 II"></a>47. 全排列 II</h2><p>给定一个可包含重复数字的序列，返回所有不重复的全排列。</p>
-<p>示例:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,1,2]</span><br><span class="line">输出:</span><br><span class="line">[</span><br><span class="line">  [1,1,2],</span><br><span class="line">  [1,2,1],</span><br><span class="line">  [2,1,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><ul>
-<li>本题和上题的区别在于nums会出现重复元素，这个导致全排列子集需要去重</li>
-<li>因此本题的难点在于如何去重剪枝</li>
+<h4 id="预训练模型有以下几个好处："><a href="#预训练模型有以下几个好处：" class="headerlink" title="预训练模型有以下几个好处："></a>预训练模型有以下几个好处：</h4><ul>
+<li>首先，如果手头<strong>训练集数据量较少</strong>的话，由于Resnet/Densenet/Inception等网络结构层数深参数庞大，直接训练非常<strong>容易过拟合</strong>，但是如果其中大量参数通过大的训练集合比如ImageNet预先训练好直接拿来初始化大部分网络结构参数，然后再用C任务手头比较可怜的数据量上Fine-tuning过程去调整参数让它们更适合解决C任务，那事情就好办多了。</li>
+<li>即使<strong>手头任务训练数据较多</strong>，加个预训练过程也能<strong>极大加快任务训练的收敛速度</strong>，所以这种预训练方式是老少皆宜的解决方案，另外疗效又好，所以在做图像处理领域很快就流行开来。</li>
 </ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一、朴素思想</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permuteUnique</span><span class="params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> []</span><br><span class="line">        res=[]</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(nums,tmp_list)</span>:</span></span><br><span class="line">            <span class="comment"># 最简单的想法，只需要在tmp_list加入之前判断是否存在于res</span></span><br><span class="line">            <span class="comment"># 但是数组的查找效率为O(N)，因此导致算法整体速度大大下降 </span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> nums <span class="keyword">and</span> tmp_list <span class="keyword">not</span> <span class="keyword">in</span> res:</span><br><span class="line">                res.append(tmp_list)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">                backtrack(nums[:i]+nums[i+<span class="number">1</span>:],tmp_list+[nums[i]])</span><br><span class="line">        backtrack(nums,[])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法二、记录已访问元素</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permuteUnique</span><span class="params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> []</span><br><span class="line">        res=[]</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">backtrack</span><span class="params">(nums,tmp_list)</span>:</span></span><br><span class="line">            <span class="comment"># 在递归的开始创建一个空集合</span></span><br><span class="line">            vis=set()</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">                res.append(tmp_list)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">                <span class="comment"># 遍历元素的时候，如果该元素在vis中存在，则进行剪枝跳过，否则加入vis</span></span><br><span class="line">                <span class="comment"># 由于set的查找效率为O(1)因此运行速度大大提升</span></span><br><span class="line">                <span class="keyword">if</span> nums[i] <span class="keyword">in</span> vis:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    vis.add(nums[i])</span><br><span class="line">                backtrack(nums[:i]+nums[i+<span class="number">1</span>:],tmp_list+[nums[i]])</span><br><span class="line">        backtrack(nums,[])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
+<h4 id="那么问题来了，为何预训练和迁移学习这个方法是可行的呢？"><a href="#那么问题来了，为何预训练和迁移学习这个方法是可行的呢？" class="headerlink" title="那么问题来了，为何预训练和迁移学习这个方法是可行的呢？"></a>那么问题来了，为何预训练和迁移学习这个方法是可行的呢？</h4><ul>
+<li>根据一些相关的论文研究，对于层级的CNN结构来说，<strong>不同层级的神经元学习到了不同类型的图像特征</strong>，由底向上特征形成层级结构。</li>
+<li>比如一个人脸识别任务，训练好网络后，把每层神经元学习到的特征可视化。最底层的神经元学到的是<strong>点和线</strong>等特征，再往上层学到的是<strong>五官的轮廓</strong>，再上学到的是<strong>人脸的轮廓</strong>，逐步形成了特征的层级结构，<strong>最底层的特征往往是自然界中普遍存在的边角线弧线等底层基础特征</strong>，越往上层则是具体的物体的概念</li>
+<li>正因为此，所以通过大规模预训练好的网络参数，尤其是底层的网络参数抽取出特征跟具体任务越无关，<strong>具备任务的通用性</strong>，所以这是为何一般用底层预训练好的参数初始化新任务网络参数的原因。</li>
+<li>而高层特征跟任务关联较大，所以最终采用Fine-tuning用新数据集学习高层特征概念。</li>
+</ul>
+<h4 id="那么问题又来了，既然预训练在CV证实了效果惊人，那NLP呢？"><a href="#那么问题又来了，既然预训练在CV证实了效果惊人，那NLP呢？" class="headerlink" title="那么问题又来了，既然预训练在CV证实了效果惊人，那NLP呢？"></a>那么问题又来了，既然预训练在CV证实了效果惊人，那NLP呢？</h4><p>其实2003年的word embedding就是NLP里的早期预训练技术，一般加到下游任务里，都能有1到2个点的性能提升，只是没有那么耀眼的成功而已。<br>直到2013年最火的用语言模型，谷歌的Word2Vec横空出世，NLP预训练模型才逐步进入视野。<br>Word2Vec有两种训练方法：</p>
+<ul>
+<li>一种叫CBOW，核心思想是从一个句子里面把一个词抠掉，用这个词的上文和下文去预测被抠掉的这个词；</li>
+<li>第二种叫做Skip-gram，和CBOW正好反过来，输入某个单词，要求网络预测它的上下文单词。</li>
+<li>而你回头看看，NNLM是怎么训练的？是输入一个单词的上文，去预测这个单词。这是有显著差异的。为什么Word2Vec这么处理？原因很简单，因为Word2Vec和NNLM不一样，NNLM的主要任务是要学习一个解决语言模型任务的网络结构，语言模型就是要看到上文预测下文，而word embedding只是无心插柳的一个副产品。但是Word2Vec目标不一样，它单纯就是要word embedding的，这是主产品，所以它完全可以随性地这么去训练网络。  </li>
+</ul>
+<p><img src="//caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/word2vec.jpg" alt></p>
+<p>使用Word2Vec，就可以获得每个单词的Word Embedding，上图的例子可以看出效果还是很不错的，一个单词表达成Word Embedding后，很容易找出语义相近的其它词汇。</p>
+<p>我们的主题是<strong>预训练</strong>，那么问题是Word Embedding这种做法能算是预训练吗？这其实就是标准的预训练过程。要理解这一点要看看学会Word Embedding后下游任务是怎么用它的。</p>
+<p><img src="//caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/word2vec2.jpg" alt></p>
+<p>假设如上图所示，我们有个NLP的下游任务，比如QA。<br>所谓问答问题，指的是给定一个问题X，给定另外一个句子Y,要判断句子Y是否是问题X的正确答案。它的使用就是把句子中每个单词以Onehot形式作为输入，然后乘以学好的Word Embedding矩阵Q，就直接取出单词对应的Word Embedding了。<br>这乍看上去好像是个查表操作，不像是预训练的做法是吧？其实不然，那个Word Embedding矩阵Q其实就是网络Onehot层到embedding层映射的网络参数矩阵。所以使用Word Embedding<code>等价于把Onehot层到embedding层的网络用预训练好的参数矩阵Q初始化了</code>。这跟前面讲的图像领域的低层预训练过程其实是一样的，区别无非Word Embedding只能初始化第一层网络参数，再高层的参数就无能为力了。下游NLP任务在使用Word Embedding的时候也类似图像有两种做法，一种是Frozen，就是Word Embedding那层网络参数固定不动；另外一种是Fine-Tuning，就是Word Embedding这层参数使用新的训练集合训练也需要跟着训练过程更新掉。</p>
+<h4 id="那么新问题来了，为什么这样训练及使用Word-Embedding的效果没有期待中那么好呢？Word-Embedding存在什么问题？"><a href="#那么新问题来了，为什么这样训练及使用Word-Embedding的效果没有期待中那么好呢？Word-Embedding存在什么问题？" class="headerlink" title="那么新问题来了，为什么这样训练及使用Word Embedding的效果没有期待中那么好呢？Word Embedding存在什么问题？"></a>那么新问题来了，为什么这样训练及使用Word Embedding的效果没有期待中那么好呢？Word Embedding存在什么问题？</h4><p> <strong>多义词问题。</strong>  </p>
+<p><img src="//caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/duoyici.jpg" alt><br>一词多义在中英文中都是正常的现象。那么多义词对Word Embedding来说有什么负面影响？<br>如上图所示，比如多义词Bank有两个常用含义，但是Word Embedding在对bank这个单词进行编码的时候，是区分不开这两个含义的，在用语言模型训练的时候，不论什么上下文的句子经过word2vec，都是预测相同的单词bank，而<strong>同一个单词占的是同一行的参数空间</strong>，这导致<strong>两种不同的上下文信息都会编码到相同的word embedding空间里去</strong>。所以word embedding<strong>无法区分多义词的不同语义</strong>，这就是它的一个比较严重的问题。</p>
+<h4 id="从Word-Embedding到ELMO"><a href="#从Word-Embedding到ELMO" class="headerlink" title="从Word Embedding到ELMO"></a>从Word Embedding到ELMO</h4><p>ELMO是“Embedding from Language Models”的简称，ELMO的论文题目：<strong>“Deep contextualized word representation”（深层语境化的词汇表征）</strong>更能体现其精髓，而精髓在哪里？</p>
+<p>在此之前的Word Embedding本质上是个<strong>静态的方式</strong>，所谓静态指的是训练好之后每个单词的表达就固定住了，以后使用的时候，不论新句子上下文单词是什么，这个单词的Word Embedding不会跟着上下文场景的变化而改变，所以对于比如Bank这个词，它事先学好的Word Embedding中混合了几种语义 ，在应用中来了个新句子，即使从上下文中（比如句子包含money等词）明显可以看出它代表的是“银行”的含义，但是对应的Word Embedding内容也不会变，它还是混合了多种语义。</p>
+<p>ELMO的本质思想是：我事先用语言模型学好一个单词的Word Embedding，此时多义词无法区分，不过这没关系。在我实际使用Word Embedding的时候，单词已经具备了特定的上下文了，这个时候我可以<strong>根据上下文单词的语义去调整单词的Word Embedding表示</strong>，这样经过调整后的Word Embedding更能表达在这个上下文中的具体含义，自然也就解决了多义词的问题了。所以ELMO本身是个<strong>根据当前上下文对Word Embedding动态调整</strong>的思路。<br><img src="//caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/elmo.jpg" alt></p>
+<p>ELMO采用了典型的两阶段过程:</p>
+<ul>
+<li>第一个阶段是利用语言模型进行预训练；</li>
+<li>第二个阶段是在做下游任务时，从预训练网络中提取对应单词的网络各层的Word Embedding作为新特征补充到下游任务中。</li>
+</ul>
+<p>上图展示的是其预训练过程，它的网络结构采用了<strong>双层双向LSTM</strong>，目前语言模型训练的任务目标是<strong>根据单词</strong><br>$W_i$<br><strong>的上下文去正确预测单词</strong> $W_i$ ， $W_i$ 之前的单词序列Context-before称为上文，之后的单词序列Context-after称为下文。</p>
+<p>图中左端的前向双层LSTM代表正方向编码器，输入的是从左到右顺序的除了预测单词外 $W_i$ 的上文Context-before；右端的逆向双层LSTM代表反方向编码器，输入的是从右到左的逆序的句子下文Context-after；每个编码器的深度都是两层LSTM叠加。这个网络结构其实在NLP中是很常用的。使用这个网络结构利用大量语料做语言模型任务就能预先训练好这个网络，如果训练好这个网络后，输入一个新句子 $S_new$ ，句子中每个单词都能得到对应的三个Embedding:最底层是单词的Word Embedding，往上走是第一层双向LSTM中对应单词位置的Embedding，这层编码单词的句法信息更多一些；再往上走是第二层LSTM中对应单词位置的Embedding，这层编码单词的语义信息更多一些。</p>
+<p>也就是说，ELMO的预训练过程不仅仅学会单词的Word Embedding，还学会了一个双层双向的LSTM网络结构，而这两者后面都有用。</p>
+<p><img src="//caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/elmo2.jpg" alt></p>
+<p>那么预训练好网络结构后，如何给下游任务使用呢？</p>
+<p>上图展示了下游任务的使用过程:</p>
+<ul>
+<li>比如我们的下游任务仍然是QA问题，此时对于问句X，我们可以先将句子X作为预训练好的ELMO网络的输入，这样句子X中每个单词在ELMO网络中都能获得对应的三个Embedding.</li>
+<li>之后给予这三个Embedding中的每一个Embedding一个权重a，这个权重可以学习得来，<strong>根据各自权重累加求和，将三个Embedding整合成一个</strong>。</li>
+<li>然后将整合后的这个Embedding作为X句在自己任务的那个网络结构中对应单词的输入，以此作为补充的新特征给下游任务使用。这一类预训练的方法被称为“Feature-based Pre-Training”。</li>
+</ul>
+<p><img src="//caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/elmo3.jpg" alt></p>
+<p>那么ELMO引入上下文动态调整单词的embedding<strong>后多义词问题几乎完美解决</strong>。上图给了个例子，使用ELMO，根据上下文动态调整后的embedding不仅能够找出对应的“演出”的相同语义的句子，而且还可以保证找出的句子中的play对应的词性也是相同的，这是超出期待之处。之所以会这样，是因为我们上面提到过，第一层LSTM编码了很多句法信息，这在这里起到了重要作用。</p>
+<p>ELMO有什么值得改进的缺点：</p>
+<ul>
+<li>首先，一个非常明显的缺点在特征抽取器选择方面，<strong>ELMO使用了LSTM而不是Transformer</strong></li>
+<li>另外一点，ELMO采取<strong>双向拼接这种融合特征</strong>的能力可能比Bert一体化的融合特征方式弱</li>
+</ul>
+<p>ELMO这种预训练方法和图像领域的预训练方法对比，发现两者模式看上去还是有很大差异的。除了以ELMO为代表的这种<strong>基于特征融合的预训练</strong>方法外，NLP里还有一种典型做法，这种做法和图像领域的方式就是看上去一致的了，一般将这种方法称为“基于Fine-tuning的模式”，而GPT就是这一模式的典型开创者。</p>
+<h4 id="GPT的诞生"><a href="#GPT的诞生" class="headerlink" title="GPT的诞生"></a>GPT的诞生</h4><p>GPT是“Generative Pre-Training”的简称，从名字看其含义是指的生成式的预训练。<br>GPT也采用两阶段过程</p>
+<ul>
+<li>第一个阶段是利用语言模型进行预训练</li>
+<li>第二阶段通过Fine-tuning的模式解决下游任务。</li>
+</ul>
+<p>主要不同在于两点：</p>
+<ul>
+<li>首先，特征抽取器不是用的RNN，而是用的Transformer，Transformer的特征抽取能力是要强于RNN</li>
+<li>其次，GPT的预训练虽然仍然是以语言模型作为目标任务，但是采用的是单向的语言模型，GPT只采用Context-before这个单词的上文来进行预测，而抛开了下文。<br>$$\sum_{i=1}^n a_i=0$$</li>
+</ul>
+<h4 id="大杀器Bert"><a href="#大杀器Bert" class="headerlink" title="大杀器Bert"></a>大杀器Bert</h4><p>Bert采用和GPT完全相同的两阶段模型：</p>
+<ul>
+<li>首先是语言模型预训练；</li>
+<li>其次是使用Fine-Tuning模式解决下游任务。</li>
+<li>和GPT的最主要不同在于在预训练阶段采用了类似ELMO的双向语言模型</li>
+<li>另外一点是语言模型的数据规模要比GPT大。</li>
+</ul>
+<p>Bert其实和ELMO及GPT存在千丝万缕的关系：</p>
+<ul>
+<li>比如如果我们把GPT预训练阶段换成双向语言模型，那么就得到了Bert；</li>
+<li>而如果我们把ELMO的特征抽取器换成Transformer，那么我们也会得到Bert。</li>
+<li>所以你可以看出，Bert最关键两点，一点是特征抽取器采用Transformer；第二点是预训练的时候采用双向语言模型。</li>
+</ul>
+<p><img src="//caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/bert.jpg" alt></p>
+<p>对于Transformer来说，怎么才能在这个结构上做双向语言模型任务呢？BERT用的就是前面提到了<strong>CBOW方法</strong>，它的核心思想是：在做语言模型任务的时候，我把要预测的单词抠掉，然后根据它的上文Context-Before和下文Context-after去预测单词。</p>
+<p>从这里可以看出，Bert在模型方面其实没有太大创新，更像一个最近几年NLP重要技术的集大成者，Bert本身的效果好和普适性强才是最大的亮点。</p>
+<p>Masked双向语言模型做法：</p>
+<ul>
+<li><strong>随机选择语料中15%的单词</strong>，把它抠掉，也就是用[Mask]掩码代替原始单词，然后要求模型去正确预测被抠掉的单词。</li>
+<li>但是这里有个问题：训练过程大量看到[mask]标记，但是真正后面用的时候是不会有这个标记的，这会引导模型认为输出是针对[mask]这个标记的，但是实际使用又见不到这个标记，这自然会有问题。</li>
+<li>为了避免这个问题，Bert改造了一下，<strong>15%</strong>的[mask]单词中，只有<strong>80%真正被替换成[mask]标记，10%被随机替换成另外一个单词，10%概率不变</strong>。</li>
+</ul>
+<p>总结来说，bert最主要的意义在于：</p>
+<ul>
+<li>近年来NLP重大突破的集大成者</li>
+<li>充分利用了大量的无监督文本数据，将语言学知识融入其中</li>
+<li>充分展示了transformer的特征提取能力</li>
+<li>奠定了超大规模预训练+具体任务finetuning的二阶段训练方式</li>
+<li>揭开了NLP超大规模预训练数据的的军备竞赛（只有大厂玩得动？）</li>
+</ul>
 
     
 
@@ -327,7 +414,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://caicaijason.github.io/2019/11/21/全排列/" title="全排列" target="_blank">https://caicaijason.github.io/2019/11/21/全排列/</a>
+          <a href="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/" title="NLP中的预训练技术发展史" target="_blank">https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -346,11 +433,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NLP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回溯</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
         		</li>
       		
 		</ul>
@@ -406,7 +493,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caicaijason.github.io/2019/11/21/全排列/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -421,18 +508,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/11/21/组合/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          组合
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/11/21/打家劫舍/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">打家劫舍</div>
+    <a href="/2019/11/21/PyTorch-Tricks集合/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PyTorch Tricks集合</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -459,7 +537,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#46-全排列"><span class="toc-number">1.</span> <span class="toc-text">46. 全排列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-number">1.1.</span> <span class="toc-text">思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#47-全排列-II"><span class="toc-number">2.</span> <span class="toc-text">47. 全排列 II</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路："><span class="toc-number">2.1.</span> <span class="toc-text">思路：</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NLP中的预训练技术发展史"><span class="toc-number">1.</span> <span class="toc-text">NLP中的预训练技术发展史</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#从图像领域的预训练说起"><span class="toc-number">1.1.</span> <span class="toc-text">从图像领域的预训练说起</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#那么图像领域怎么做预训练呢？"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">那么图像领域怎么做预训练呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#预训练模型有以下几个好处："><span class="toc-number">1.1.0.2.</span> <span class="toc-text">预训练模型有以下几个好处：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#那么问题来了，为何预训练和迁移学习这个方法是可行的呢？"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">那么问题来了，为何预训练和迁移学习这个方法是可行的呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#那么问题又来了，既然预训练在CV证实了效果惊人，那NLP呢？"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">那么问题又来了，既然预训练在CV证实了效果惊人，那NLP呢？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#那么新问题来了，为什么这样训练及使用Word-Embedding的效果没有期待中那么好呢？Word-Embedding存在什么问题？"><span class="toc-number">1.1.0.5.</span> <span class="toc-text">那么新问题来了，为什么这样训练及使用Word Embedding的效果没有期待中那么好呢？Word Embedding存在什么问题？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从Word-Embedding到ELMO"><span class="toc-number">1.1.0.6.</span> <span class="toc-text">从Word Embedding到ELMO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GPT的诞生"><span class="toc-number">1.1.0.7.</span> <span class="toc-text">GPT的诞生</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#大杀器Bert"><span class="toc-number">1.1.0.8.</span> <span class="toc-text">大杀器Bert</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -472,7 +550,7 @@
 
 
 
-<div id="SOHUCS" sid="全排列" ></div> 
+<div id="SOHUCS" sid="NLP中的预训练技术发展史" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -517,9 +595,9 @@
     <script src="/lib/gitment.js"></script>
   
   <script>
-    <!-- id: "全排列" -->
+    <!-- id: "NLP中的预训练技术发展史" -->
     var gitment = new Gitment({
-      id: "20191121155343",
+      id: "20191122102553",
       owner: 'CaicaiJason',
       repo: 'CaicaiJason.github.io',
       oauth: {
