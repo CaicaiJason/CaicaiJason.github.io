@@ -10,13 +10,13 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="[TOC] NLP中的预训练技术发展史本文参考从Word Embedding到Bert模型—自然语言处理中的预训练技术发展史 ，仅供学习。 从图像领域的预训练说起自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。 那么图像领域怎么做预训练呢？ 对于图像来说一般是CNN的多层叠加网络结构，可以先用某个训练集合比如训练集合A或者训练集合B对这个网络进行预先训练">
-<meta name="keywords" content="NLP,深度学习">
+  <meta name="description" content="NLP中的预训练技术发展史从图像领域的预训练说起自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。 那么图像领域怎么做预训练呢？ 对于图像来说一般是CNN的多层叠加网络结构，可以先用某个训练集合比如训练集合A或者训练集合B对这个网络进行预先训练，在A任务上或者B任务上学会网络参数，然后存起来以备后用。 假设我们面临第三个任务C，网络结构采取相同的网络结构，">
+<meta name="keywords" content="NLP,深度学习,BERT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NLP中的预训练技术发展史">
 <meta property="og:url" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="[TOC] NLP中的预训练技术发展史本文参考从Word Embedding到Bert模型—自然语言处理中的预训练技术发展史 ，仅供学习。 从图像领域的预训练说起自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。 那么图像领域怎么做预训练呢？ 对于图像来说一般是CNN的多层叠加网络结构，可以先用某个训练集合比如训练集合A或者训练集合B对这个网络进行预先训练">
+<meta property="og:description" content="NLP中的预训练技术发展史从图像领域的预训练说起自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。 那么图像领域怎么做预训练呢？ 对于图像来说一般是CNN的多层叠加网络结构，可以先用某个训练集合比如训练集合A或者训练集合B对这个网络进行预先训练，在A任务上或者B任务上学会网络参数，然后存起来以备后用。 假设我们面临第三个任务C，网络结构采取相同的网络结构，">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/word2vec.jpg">
 <meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/word2vec2.jpg">
@@ -25,10 +25,10 @@
 <meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/elmo2.jpg">
 <meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/elmo3.jpg">
 <meta property="og:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/bert.jpg">
-<meta property="og:updated_time" content="2019-11-22T03:25:12.560Z">
+<meta property="og:updated_time" content="2019-11-22T03:30:56.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NLP中的预训练技术发展史">
-<meta name="twitter:description" content="[TOC] NLP中的预训练技术发展史本文参考从Word Embedding到Bert模型—自然语言处理中的预训练技术发展史 ，仅供学习。 从图像领域的预训练说起自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。 那么图像领域怎么做预训练呢？ 对于图像来说一般是CNN的多层叠加网络结构，可以先用某个训练集合比如训练集合A或者训练集合B对这个网络进行预先训练">
+<meta name="twitter:description" content="NLP中的预训练技术发展史从图像领域的预训练说起自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。 那么图像领域怎么做预训练呢？ 对于图像来说一般是CNN的多层叠加网络结构，可以先用某个训练集合比如训练集合A或者训练集合B对这个网络进行预先训练，在A任务上或者B任务上学会网络参数，然后存起来以备后用。 假设我们面临第三个任务C，网络结构采取相同的网络结构，">
 <meta name="twitter:image" content="https://caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/word2vec.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Jason" type="application/atom+xml">
@@ -89,7 +89,7 @@
 	        
 				<li><a href="/tags/算法/" >算法解析</a></li>
 	        
-				<li><a href="/tags/机器学习/" >机器学习</a></li>
+				<li><a href="/tags/深度学习/" >机器学习</a></li>
 	        
 				<li><a href="/archives/index.html" >归档</a></li>
 	        
@@ -194,7 +194,7 @@
 		        
 					<li style="width: 25%"><a href="/tags/算法/">算法解析</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/机器学习/">机器学习</a></li>
+					<li style="width: 25%"><a href="/tags/深度学习/">机器学习</a></li>
 		        
 					<li style="width: 25%"><a href="/archives/index.html">归档</a></li>
 		        
@@ -265,10 +265,7 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>[TOC]</p>
-<h1 id="NLP中的预训练技术发展史"><a href="#NLP中的预训练技术发展史" class="headerlink" title="NLP中的预训练技术发展史"></a>NLP中的预训练技术发展史</h1><p>本文参考<a href="https://zhuanlan.zhihu.com/p/49271699" target="_blank" rel="noopener">从Word Embedding到Bert模型—自然语言处理中的预训练技术发展史
-</a>，仅供学习。</p>
-<h2 id="从图像领域的预训练说起"><a href="#从图像领域的预训练说起" class="headerlink" title="从图像领域的预训练说起"></a>从图像领域的预训练说起</h2><p>自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。</p>
+    <h1 id="NLP中的预训练技术发展史"><a href="#NLP中的预训练技术发展史" class="headerlink" title="NLP中的预训练技术发展史"></a>NLP中的预训练技术发展史</h1><h2 id="从图像领域的预训练说起"><a href="#从图像领域的预训练说起" class="headerlink" title="从图像领域的预训练说起"></a>从图像领域的预训练说起</h2><p>自从深度学习火起来后，从预训练模型进行迁移学习就是做图像或者视频领域的一种高效又常规的做法。</p>
 <h4 id="那么图像领域怎么做预训练呢？"><a href="#那么图像领域怎么做预训练呢？" class="headerlink" title="那么图像领域怎么做预训练呢？"></a>那么图像领域怎么做预训练呢？</h4><ul>
 <li>对于图像来说一般是CNN的多层叠加网络结构，可以先用某个训练集合比如训练集合A或者训练集合B对这个网络进行预先训练，在A任务上或者B任务上学会网络参数，然后存起来以备后用。</li>
 <li>假设我们面临第三个任务C，网络结构采取相同的网络结构，在比较浅的几层CNN结构，网络参数初始化的时候可以加载A任务或者B任务学习好的参数，其它CNN高层参数仍然随机初始化。</li>
@@ -278,6 +275,8 @@
 </ul>
 </li>
 </ul>
+<a id="more"></a>
+
 <h4 id="预训练模型有以下几个好处："><a href="#预训练模型有以下几个好处：" class="headerlink" title="预训练模型有以下几个好处："></a>预训练模型有以下几个好处：</h4><ul>
 <li>首先，如果手头<strong>训练集数据量较少</strong>的话，由于Resnet/Densenet/Inception等网络结构层数深参数庞大，直接训练非常<strong>容易过拟合</strong>，但是如果其中大量参数通过大的训练集合比如ImageNet预先训练好直接拿来初始化大部分网络结构参数，然后再用C任务手头比较可怜的数据量上Fine-tuning过程去调整参数让它们更适合解决C任务，那事情就好办多了。</li>
 <li>即使<strong>手头任务训练数据较多</strong>，加个预训练过程也能<strong>极大加快任务训练的收敛速度</strong>，所以这种预训练方式是老少皆宜的解决方案，另外疗效又好，所以在做图像处理领域很快就流行开来。</li>
@@ -336,7 +335,7 @@
 <p>主要不同在于两点：</p>
 <ul>
 <li>首先，特征抽取器不是用的RNN，而是用的Transformer，Transformer的特征抽取能力是要强于RNN</li>
-<li>其次，GPT的预训练虽然仍然是以语言模型作为目标任务，但是采用的是单向的语言模型，GPT只采用Context-before这个单词的上文来进行预测，而抛开了下文。<br>$$\sum_{i=1}^n a_i=0$$</li>
+<li>其次，GPT的预训练虽然仍然是以语言模型作为目标任务，但是采用的是单向的语言模型，GPT只采用Context-before这个单词的上文来进行预测，而抛开了下文。</li>
 </ul>
 <h4 id="大杀器Bert"><a href="#大杀器Bert" class="headerlink" title="大杀器Bert"></a>大杀器Bert</h4><p>Bert采用和GPT完全相同的两阶段模型：</p>
 <ul>
@@ -352,8 +351,7 @@
 <li>所以你可以看出，Bert最关键两点，一点是特征抽取器采用Transformer；第二点是预训练的时候采用双向语言模型。</li>
 </ul>
 <p><img src="//caicaijason.github.io/2019/11/22/NLP中的预训练技术发展史/bert.jpg" alt></p>
-<p>对于Transformer来说，怎么才能在这个结构上做双向语言模型任务呢？BERT用的就是前面提到了<strong>CBOW方法</strong>，它的核心思想是：在做语言模型任务的时候，我把要预测的单词抠掉，然后根据它的上文Context-Before和下文Context-after去预测单词。</p>
-<p>从这里可以看出，Bert在模型方面其实没有太大创新，更像一个最近几年NLP重要技术的集大成者，Bert本身的效果好和普适性强才是最大的亮点。</p>
+<p>对于Transformer来说，怎么才能在这个结构上做双向语言模型任务呢？BERT用的就是前面提到了<strong>CBOW方法</strong>，它的核心思想是：在做语言模型任务的时候，我把要预测的单词抠掉，然后根据它的上文Context-Before和下文Context-after去预测单词。<br>从这里可以看出，Bert在模型方面其实没有太大创新，更像一个最近几年NLP重要技术的集大成者，Bert本身的效果好和普适性强才是最大的亮点。</p>
 <p>Masked双向语言模型做法：</p>
 <ul>
 <li><strong>随机选择语料中15%的单词</strong>，把它抠掉，也就是用[Mask]掩码代替原始单词，然后要求模型去正确预测被抠掉的单词。</li>
@@ -368,6 +366,8 @@
 <li>奠定了超大规模预训练+具体任务finetuning的二阶段训练方式</li>
 <li>揭开了NLP超大规模预训练数据的的军备竞赛（只有大厂玩得动？）</li>
 </ul>
+<p>本文参考张俊林博士的<a href="https://zhuanlan.zhihu.com/p/49271699" target="_blank" rel="noopener">从Word Embedding到Bert模型—自然语言处理中的预训练技术发展史
+</a>，仅供学习。</p>
 
     
 
@@ -438,6 +438,10 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BERT</a>
         		</li>
       		
 		</ul>
@@ -805,6 +809,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">回溯</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">BERT</a>
               </li>
             
             <div class="clearfix"></div>
