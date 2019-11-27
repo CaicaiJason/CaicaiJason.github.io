@@ -6,21 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://caicaijason.github.io">
-  <title>Archives: 2019/10 | Jason</title>
+  <title>目标检测算法解析 | Jason</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="I&apos;m Jason">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jason">
-<meta property="og:url" content="https://caicaijason.github.io/archives/2019/10/index.html">
+  <meta name="description" content="目前目标检测领域的深度学习方法主要分为两类：Two Stage的目标检测算法和One Stage的目标检测算法。  前者是先由算法生成一系列作为样本的候选框，再通过卷积神经网络进行样本分类； 后者则不用产生候选框，直接将目标边框定位的问题转化为回归问题处理。 正是由于两种方法的差异，在性能上也有不同，前者在检测准确率和定位精度上占优，后者在算法速度上占优。">
+<meta name="keywords" content="深度学习,CV,目标检测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="目标检测算法解析">
+<meta property="og:url" content="https://caicaijason.github.io/2019/11/22/目标检测算法解析/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="I&apos;m Jason">
+<meta property="og:description" content="目前目标检测领域的深度学习方法主要分为两类：Two Stage的目标检测算法和One Stage的目标检测算法。  前者是先由算法生成一系列作为样本的候选框，再通过卷积神经网络进行样本分类； 后者则不用产生候选框，直接将目标边框定位的问题转化为回归问题处理。 正是由于两种方法的差异，在性能上也有不同，前者在检测准确率和定位精度上占优，后者在算法速度上占优。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://caicaijason.github.io/2019/11/22/目标检测算法解析/rpn.png">
+<meta property="og:image" content="https://caicaijason.github.io/2019/11/22/目标检测算法解析/yolo.png">
+<meta property="og:image" content="https://caicaijason.github.io/2019/11/22/目标检测算法解析/yolo.jpg">
+<meta property="og:image" content="https://caicaijason.github.io/2019/11/22/目标检测算法解析/SSD.png">
+<meta property="og:updated_time" content="2019-11-26T08:38:55.963Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jason">
-<meta name="twitter:description" content="I&apos;m Jason">
+<meta name="twitter:title" content="目标检测算法解析">
+<meta name="twitter:description" content="目前目标检测领域的深度学习方法主要分为两类：Two Stage的目标检测算法和One Stage的目标检测算法。  前者是先由算法生成一系列作为样本的候选框，再通过卷积神经网络进行样本分类； 后者则不用产生候选框，直接将目标边框定位的问题转化为回归问题处理。 正是由于两种方法的差异，在性能上也有不同，前者在检测准确率和定位精度上占优，后者在算法速度上占优。">
+<meta name="twitter:image" content="https://caicaijason.github.io/2019/11/22/目标检测算法解析/rpn.png">
   
     <link rel="alternative" href="/atom.xml" title="Jason" type="application/atom+xml">
   
@@ -203,167 +209,480 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-目标检测算法解析" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/10/863-二叉树中所有距离为K的结点/" class="archive-article-date">
-        <time datetime="2019-10-10T03:26:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-10</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/10/863-二叉树中所有距离为K的结点/">863-二叉树中所有距离为 K 的结点</a>
-	
+    <h1 class="article-title" itemprop="name">
+      目标检测算法解析
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2019/11/22/目标检测算法解析/" class="archive-article-date">
+        <time datetime="2019-11-22T09:03:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">5.2k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">18分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>目前目标检测领域的深度学习方法主要分为两类：Two Stage的目标检测算法和One Stage的目标检测算法。</p>
+<ul>
+<li>前者是先由算法生成一系列作为样本的<strong>候选框</strong>，再通过卷积神经网络进行样本分类；</li>
+<li>后者则不用产生候选框，<strong>直接将目标边框定位的问题转化为回归问题处理</strong>。</li>
+<li>正是由于两种方法的差异，在性能上也有不同，前者在检测准确率和定位精度上占优，后者在算法速度上占优。</li>
+</ul>
+<a id="more"></a>
+
+
+<h2 id="Two-Stage的方法"><a href="#Two-Stage的方法" class="headerlink" title="Two-Stage的方法"></a>Two-Stage的方法</h2><h3 id="R-CNN"><a href="#R-CNN" class="headerlink" title="R-CNN"></a>R-CNN</h3><h4 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a>创新点</h4><ul>
+<li>采用CNN网络提取图像特征，从<strong>经验驱动</strong>的人造特征范式HOG、SIFT到<strong>数据驱动</strong>的表示学习范式，提高特征对样本的表示能力；</li>
+<li><strong>采用大样本下有监督预训练</strong>+<strong>小样本微调</strong>的方式解决小样本难以训练甚至过拟合等问题（迁移学习）。<h4 id="RCNN算法主要分为4个步骤："><a href="#RCNN算法主要分为4个步骤：" class="headerlink" title="RCNN算法主要分为4个步骤："></a>RCNN算法主要分为4个步骤：</h4></li>
+<li>候选区域生成：<strong>采用Selective Search方法</strong>对一张图像生成1K~2K个候选区域（ROI）</li>
+<li>特征提取：对每个候选区域单独进行卷积网络提取出一个4096维的特征</li>
+<li>类别判断：SVM对4096维特征进行分类，得到一个2000x20的矩阵（20种类别），然后对每一列进行NMS<strong>非极大值抑制</strong>  </li>
+<li>位置精修：使用回归器精细修正候选框位置  </li>
+</ul>
+<h4 id="NMS非极大值抑制："><a href="#NMS非极大值抑制：" class="headerlink" title="NMS非极大值抑制："></a>NMS非极大值抑制：</h4><p>选择一类（即SVM输出的某一列），对该类下每一个bounding box根据score排序，把score最大的bounding box作为选定的框，计算其余bounding box与当前最大score对应的box的IoU，去除IoU大于设定的阈值的bounding box（说明两者重复了）。然后重复上面的过程，直至候选bounding box为空，最后再将score小于一定阈值的选定框删除得到这一类的结果（然后继续进行下一个分类）。</p>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><ul>
+<li>一张图片中由selective search算法得出的约2k个建议框都需要经过变形处理后由CNN前向网络计算一次特征，对<strong>多个重复区域进行了重复计算</strong>。</li>
+<li>每次都需要计算不同图片中不同建议框CNN特征，无法<strong>共享同一张图的CNN特征</strong>，训练速度很慢；</li>
+<li><strong>使用SVM分类</strong>而不是采用深度学习的分类模型</li>
+</ul>
+<h3 id="SPP-NET"><a href="#SPP-NET" class="headerlink" title="SPP-NET"></a>SPP-NET</h3><h4 id="创新点-1"><a href="#创新点-1" class="headerlink" title="创新点"></a>创新点</h4><p>R-CNN中单幅图片大约有2000个region proposal，重复用CNN为每个region proposal提取特征是极其费时的，因此SPP-net提出：在<strong>feature map上提取ROI（即region proposal）特征，这样就只需要在整幅图像上做一次卷积，大大提高了速度</strong>.</p>
+<h3 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h3><h4 id="创新点-2"><a href="#创新点-2" class="headerlink" title="创新点"></a>创新点</h4><p>使用<strong>Softmax分类</strong>替代了R-CNN中SVM进行分类，同时在网络中加入了多任务函数边框回归，实现了大部分流程的<strong>端到端的训练</strong>（除selective search Region Proposal阶段）。</p>
+<h4 id="算法实现流程："><a href="#算法实现流程：" class="headerlink" title="算法实现流程："></a>算法实现流程：</h4><ol>
+<li>生成region proposal: 方法选用selective search，大约2K个/图，即ROI（同R-CNN和SPP-NET） </li>
+<li>借鉴SPP-NET，提出了一个<strong>ROI层</strong>。ROI Pooling Layer实际上是SPP-NET的一个精简版，SPP-NET对每个Proposal使用了不同大小的金字塔映射，而ROI Pooling Layer只需要下采样到一个7x7的特征图。对于VGG16网络conv5_3有512个特征图，这样所有Region Proposal对应了一个7<em>7</em>512维度的特征向量作为全连接层的输入。<br>3 使用了不同于SPP-NET的训练方式，训练时，把同张图片的Prososals作为一批进行学习，而Proposals的坐标直接映射到conv5层上，这样相当于一张图片的所有训练样本<strong>只卷积了一次</strong>。</li>
+<li>经过两个全连接层得到特征向量。分别输入到用于分类的softmax和bounding box回归。 <strong>利用SoftMax Loss</strong>和<strong>Smooth L1 Loss</strong>对分类概率和边框回归（Bounding Box Regression）联合训练</li>
+</ol>
+<h4 id="缺点：-1"><a href="#缺点：-1" class="headerlink" title="缺点："></a>缺点：</h4><ul>
+<li>依旧使用selective search的方法生成region proposal，没有实现真正意义上的端对端训练。</li>
+</ul>
+<h3 id="Faster-RCNN"><a href="#Faster-RCNN" class="headerlink" title="Faster-RCNN"></a>Faster-RCNN</h3><h4 id="算法特点"><a href="#算法特点" class="headerlink" title="算法特点"></a>算法特点</h4><ul>
+<li>提出了<strong>Region Proposal Network（RPN）</strong>，将Proposal阶段和CNN分类融到了一起，实现了一个<strong>完全的端到端的CNN目标检测模型</strong>。RPN可以快速提取高质量的Proposal，不仅加快了目标检测速度，还提高了目标检测性能。</li>
+<li>将Fast-RCNN和RPN放在同一个网络结构中训练，<strong>共享网络参数</strong>。</li>
+</ul>
+<h4 id="Region-Proposal-Network"><a href="#Region-Proposal-Network" class="headerlink" title="Region Proposal Network"></a>Region Proposal Network</h4><p>Region Proposal Network（RPN）的核心思想是使用卷积神经网络直接产生Region Proposal，使用的方法本质上就是<strong>滑动窗口</strong>。RPN的设计比较巧妙，RPN只需在最后的卷积层上滑动一遍，借助<strong>Anchor机制</strong>和边框回归可以得到多尺度多长宽比的Region Proposal。下图是RPN的网络结构图。</p>
+<p><img src="//caicaijason.github.io/2019/11/22/目标检测算法解析/rpn.png" alt></p>
+<p>给定输入图像（假设分辨率为600 * 1000），经过卷积操作得到最后一层的卷积特征图（大小约为40 * 60）。在这个特征图上使用3 * 3的卷积核（滑动窗口）与特征图进行卷积，最后一层卷积层共有256个Feature Map，那么这个3 * 3的区域卷积后可以获得一个256维的特征向量，后边接Cls Layer和Reg Layer分别用于分类和边框回归（跟Fast RCNN类似，只不过这里的类别只有目标和背景两个类别）。3 * 3滑窗对应的每个特征区域同时预测输入图像3种尺度<strong>（128,256,512）</strong>，3种长宽比<strong>（1:1,1:2,2:1）</strong>的Region Proposal，这种<strong>映射的机制称为Anchor</strong>。所以对于这个40 * 60的Feature Map，总共有约20000（40 * 60 * 9）个Anchor，也就是预测20000个Region Proposal。下图是51 * 39个Anchor中心，以及9种Anchor示例。<br>这样设计的好处:</p>
+<ul>
+<li><p>虽然现在也是用的滑动窗口策略，但是，<strong>滑动窗口操作是在卷积层特征图上进行</strong>的，维度较原始图像降低了16*16倍（16如何得到的可参见前文）；多尺度采用了9种Anchor，对应了三种尺度和三种长宽比，加上后边接了边框回归，所以即便是这9种Anchor外的窗口也能得到一个跟目标比较接近的Region Proposal。</p>
+</li>
+<li><p>RPN的损失函数:</p>
+<p>  $L(p_it_i)= {1\over N_cls}\sum_{i}L_{cls}(p_i,p_i^<em>)+\lambda{1\over N_{reg}}\sum_{i}p_i^*L_{reg}(t_i,t_i^</em>)$    </p>
+</li>
+</ul>
+<p>其中    $i$ 表示一次Mini-Batch中Anchor的索引，  $p_i$   表示Anchor  $i$ 是否是一个物体，    $L_reg$ 即为上面提到的   $smooth_{L_1}(x)$  函数，$N_{cls}$ 和  $N_{reg}$  是两个归一化项，分别表示Mini-Batch的大小和Anchor位置的数目。</p>
+<h4 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h4><p>作者使用了4-Step Alternating Training，具体步骤如下：</p>
+<ol>
+<li>用ImageNet模型初始化，<strong>独立训练一个RPN网络</strong>；</li>
+<li>仍然用ImageNet模型初始化，但是<strong>使用上一步RPN网络产生的Proposal作为输入</strong>，训练一个Fast-RCNN网络，至此，两个网络每一层的参数完全不共享；</li>
+<li>使用第二步的Fast-RCNN网络参数初始化一个新的RPN网络，但是把RPN、Fast-RCNN共享的那些卷积层的Learning Rate设置为0，也就是不更新，仅仅更新RPN特有的那些网络层，重新训练，此时，两个网络已经共享了所有公共的卷积层；</li>
+<li>仍然固定共享的那些网络层，把Fast-RCNN特有的网络层也加入进来，形成一个Unified Network，继续训练，Fine Tune Fast-RCNN特有的网络层，此时，该网络已经实现我们设想的目标，即网络内部预测Proposal并实现检测的功能。</li>
+</ol>
+<h2 id="One-Stage的方法"><a href="#One-Stage的方法" class="headerlink" title="One-Stage的方法"></a>One-Stage的方法</h2><p>以<strong>R-CNN算法</strong>为代表的Two-Stage的方法由于RPN结构的存在，虽然检测精度越来越高，但是其<strong>速度却遇到瓶颈</strong>，比较难于满足部分场景实时性的需求。因此出现一种<strong>基于回归方法</strong>的One-Stage的目标检测算法，不同于Two-Stage的方法的<strong>分步训练</strong>和<strong>共享检测结果</strong>，One-Stage的方法能实现<strong>完整单次训练共享特征</strong>，且在保证一定准确率的前提下，速度得到极大提升。</p>
+<h3 id="YOLO"><a href="#YOLO" class="headerlink" title="YOLO"></a>YOLO</h3><p>2015年华盛顿大学的Joseph Redmon等提出的YOLO算法继承了OverFeat算法这种基于回归的one stage方法，速度能达到每秒45帧，由于其速度优势迅速成为端到端方法的领先者。YOLO算法是基于图像的全局信息进行预测的，整体结构简单，通过将输入图像重整到448×448像素固定尺寸大小，并划分图像为7×7网格区域，通过卷积神经网络提取特征训练，直接预测每个网格内的边框坐标和每个类别置信度，训练时采用P-Relu激活函数。但是存在定位不准以及召回率不如基于区域提名方法的问题，且对距离很近的物体和很小的物体检测效果不好，泛化能力相对较弱。</p>
+<h3 id="算法特点-1"><a href="#算法特点-1" class="headerlink" title="算法特点"></a>算法特点</h3><ol>
+<li><p>将物体检测<strong>作为回归问题求解</strong>。基于一个单独的End-To-End网络，完成从原始图像的输入到物体位置和类别的输出，输入图像经过一次Inference，便能得到图像中所有物体的位置和其所属类别及相应的置信概率。</p>
+</li>
+<li><p>YOLO网络借鉴了GoogLeNet分类网络结构。不同的是，YOLO未使用Inception Module，而是使用1*1卷积层（此处1*1卷积层的存在是为了跨通道信息整合）+3*3卷积层简单替代。</p>
+</li>
+<li><p>Fast YOLO使用9个卷积层代替YOLO的24个，网络更轻快，速度从YOLO的45fps提升到155fps，但同时损失了检测准确率。</p>
+</li>
+<li><p>使用全图作为 Context 信息，背景错误（把背景错认为物体）比较少。</p>
+</li>
+<li><p><strong>泛化能力强</strong>。在自然图像上训练好的结果在艺术作品中的依然具有很好的效果。</p>
+</li>
+</ol>
+<p><img src="//caicaijason.github.io/2019/11/22/目标检测算法解析/yolo.png" alt="YOLO网络结构图"></p>
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><ol>
+<li><p>给个一个输入图像，首先将图像<strong>划分成7*7的网格</strong>。</p>
+</li>
+<li><p>对于每个网格，我们都预测2个边框（包括每个边框是目标的置信度以及每个边框区域在多个类别上的概率）。</p>
+</li>
+<li><p>根据上一步可以预测出7*7*2个目标窗口，然后根据阈值去除可能性比较低的目标窗口，最后NMS去除冗余窗口即可。</p>
+</li>
+</ol>
+<p><img src="//caicaijason.github.io/2019/11/22/目标检测算法解析/yolo.jpg" alt></p>
+<h3 id="训练过程-1"><a href="#训练过程-1" class="headerlink" title="训练过程"></a>训练过程</h3><ol>
+<li><p>预训练分类网络：在 ImageNet 1000-class Competition Dataset上预训练一个分类网络，这个网络是前文网络结构中的前20个卷机网络+Average-Pooling Layer+Fully Connected Layer（此时网络输入是224*224）。</p>
+</li>
+<li><p>训练检测网络：在预训练网络中增加卷积和全链接层可以改善性能。YOLO添加4个卷积层和2个全链接层，随机初始化权重。检测要求细粒度的视觉信息，所以把网络输入也从224*224变成448*448。</p>
+</li>
+</ol>
+<ul>
+<li><p>一幅图片分成7*7个网格，某个物体的中心落在这个网格中此网格就负责预测这个物体。每个网格预测两个Bounding Box。<strong>网格负责类别信息</strong>，<strong>Bounding Box负责坐标信息</strong>（4个坐标信息及一个置信度），所以最后一层输出为7*7*（2*（4+1）+20）=7*7*30的维度。</p>
+</li>
+<li><p>Bounding Box的坐标使用图像的大小进行归一化0-1。Confidence使用计算，其中第一项表示是否有物体落在网格里，第二项表示预测的框和实际的框之间的IOU值。</p>
+</li>
+</ul>
+<ol start="3">
+<li>损失函数的确定：损失函数的定义如下，损失函数的设计目标就是让坐标，置信度和类别这个三个方面达到很好的平衡。简单的全部采用了Sum-Squared Error Loss来做这件事会有以下不足：① 8维的Localization Error和20维的Classification Error同等重要显然是不合理的；② 如果一个网格中没有Object（一幅图中这种网格很多），那么就会将这些网格中的Box的Confidence Push到0，相比于较少的有Object的网格，这种做法是Overpowering的，这会导致网络不稳定甚至发散。 解决方案如下:</li>
+</ol>
+<ul>
+<li><p>更重视8维的坐标预测，给这些损失前面赋予更大的Loss Weight, 记为    $\lambda_{coord}$   </p>
+</li>
+<li><p>对没有Object的Bbox的Confidence Loss，赋予小的Loss Weight，记为   $\lambda_{noobj}$   </p>
+</li>
+<li><p>有Object的Bbox的Confidence Loss和类别的Loss的Loss Weight正常取1。</p>
+</li>
+<li><p>对不同大小的Bbox预测中，相比于大Bbox预测偏一点，小Bbox预测偏一点更不能忍受。而Sum-Square Error Loss中对同样的偏移Loss是一样。为了缓和这个问题，将Bbox的Width和Height取平方根代替原本的Height和Width。 </p>
+</li>
+<li><p>一个网格预测多个Bbox，在训练时我们希望每个Object（Ground True box）只有一个Bbox专门负责（一个Object 一个Bbox）。具体做法是与Ground True Box（Object）的IOU最大的Bbox 负责该Ground True Box（Object）的预测。这种做法称作Bbox Predictor的Specialization（专职化）。每个预测器会对特定（Sizes,Aspect Ratio or Classed of Object）的Ground True Box预测的越来越好。</p>
+</li>
+</ul>
+<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><ul>
+<li><p>YOLO对相互<strong>靠的很近的物体</strong>（挨在一起且中点都落在同一个格子上的情况），还有很<strong>小的群体</strong>检测效果不好，这是因为一个网格中只预测了两个框，并且只属于一类。</p>
+</li>
+<li><p>测试图像中，当同一类物体出现的<strong>不常见的长宽比和其他情况时泛化能力偏弱</strong>。</p>
+</li>
+<li><p>由于损失函数的问题，定位误差是影响检测效果的主要原因，尤其是大小物体的处理上，还有待加强。</p>
+</li>
+</ul>
+<h3 id="SSD"><a href="#SSD" class="headerlink" title="SSD"></a>SSD</h3><h4 id="算法特点-2"><a href="#算法特点-2" class="headerlink" title="算法特点"></a>算法特点</h4><ol>
+<li><p>SSD结合了YOLO中的<strong>回归思想</strong>和Faster-RCNN中的<strong>Anchor机制</strong>，使用全图各个位置的<strong>多尺度区域特征进行回归</strong>，既保持了YOLO速度快的特性，也保证了窗口预测的跟Faster-RCNN一样比较精准。</p>
+</li>
+<li><p>SSD的核心是在特征图上采用卷积核来预测一系列Default Bounding Boxes的类别、坐标偏移。为了提高检测准确率，SSD在不同尺度的特征图上进行预测。</p>
+</li>
+</ol>
+<h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><ol>
+<li>多尺度特征图（Mult-scale Feature Map For Detection）</li>
+</ol>
+<p>在图像Base Network基础上，将Fc6，Fc7变为了Conv6，Conv7两个卷积层，添加了一些卷积层（Conv8，Conv9，Conv10，Conv11），这些层的大小逐渐减小，可以进行多尺度预测。</p>
+<p><img src="//caicaijason.github.io/2019/11/22/目标检测算法解析/SSD.png" alt></p>
+<ol start="2">
+<li>卷积预测器（Convolutional Predictors For Detection）</li>
+</ol>
+<p>每个新添加的卷积层和之前的部分卷积层，使用一系列的卷积核进行预测。对于一个大小为m*n大小，p通道的卷积层，使用3*3的p通道卷积核作为基础预测元素进行预测，在某个位置上预测出一个值，该值可以是某一类别的得分，也可以是相对于Default Bounding Boxes的偏移量，并且在图像的每个位置都将产生一个值。</p>
+<ol start="3">
+<li>默认框和比例（Default Boxes And Aspect Ratio）</li>
+</ol>
+<p>在特征图的每个位置预测K个Box。对于每个Box，预测C个类别得分，以及相对于Default Bounding Box的4个偏移值，这样需要(C+4)*k个预测器，在m*n的特征图上将产生(C+4)*k*m*n个预测值。这里，Default Bounding Box类似于Faster-RCNN中Anchors。</p>
+<h3 id="SSD效果好主要有三点原因："><a href="#SSD效果好主要有三点原因：" class="headerlink" title="SSD效果好主要有三点原因："></a>SSD效果好主要有三点原因：</h3><p><strong>多尺度</strong>:由SSD的网络结构可以看出，SSD使用6个不同特征图检测不同尺度的目标。低层预测小目标，高层预测大目标。</p>
+<p><strong>设置了多种宽高比的anchor</strong>:由于现实中的目标会有各种宽高比(比如行人)，设置多个宽高比可以检测到不同宽高比的目标。</p>
+<p><strong>数据增强</strong>:SSD中使用了两种数据增强的方式</p>
+<ul>
+<li><strong>放大操作</strong>: 随机crop，patch与任意一个目标的IOU为0.1,0.3,0.5,0.7,0.9，每个patch的大小为原图大小的[0.1,1],宽高比在1/2到2之间。能够生成更多的尺度较大的目标 </li>
+<li>缩小操作: 首先创建16倍原图大小的画布，然后将原图放置其中，然后随机crop，能够生成更多尺度较小的目标</li>
+</ul>
+<h3 id="SSD的缺点"><a href="#SSD的缺点" class="headerlink" title="SSD的缺点"></a>SSD的缺点</h3><p>SSD主要缺点：SSD对小目标的检测效果一般，作者认为小目标在高层没有足够的信息。</p>
+<h2 id="YOLOv2"><a href="#YOLOv2" class="headerlink" title="YOLOv2"></a>YOLOv2</h2><p>经过Joseph Redmon等的改进，YOLOv2和YOLO9000算法在2017年CVPR上被提出，并获得最佳论文提名，重点解决召回率和定位精度方面的误差。采用Darknet-19作为特征提取网络，增加了批量归一化（Batch Normalization）的预处理，并使用224×224和448×448两阶段训练ImageNet预训练模型后fine-tuning。相比于原来的YOLO是利用全连接层直接预测bounding box的坐标，YOLOv2借鉴了Faster R-CNN的思想，引入anchor机制，利用K-Means聚类的方式在训练集中聚类计算出更好的anchor模板，在卷积层使用anchorboxes操作，增加候选框的预测，同时采用较强约束的定位方法，大大提高算法召回率。结合图像细粒度特征，将浅层特征与深层特征相连，有助于对小尺寸目标的检测。</p>
+<h3 id="改进点"><a href="#改进点" class="headerlink" title="改进点"></a>改进点</h3><ul>
+<li><p>添加了<strong>BN层</strong>，map提高了2%。</p>
+</li>
+<li><p>用<strong>448x448</strong>的输入分辨率在ImageNet上进行参数微调，map提高了4%。</p>
+</li>
+<li><p>把全连接层取消，<strong>使用anchor boxes来预测目标方框</strong>；使用anchor boxes的话就把分类置信度和空间位置分离了，所以对每个预测方框都可以回归一个方框置信度和分类置信度。不用anchor box时map是69.5%，召回率是81%，使用了之后map是69.2%召回率是88%。</p>
+</li>
+<li><p>用k-means来选择好的<strong>方框先验</strong>。</p>
+</li>
+<li><p>新的分类网络Darknet-19</p>
+</li>
+</ul>
+<h2 id="YOLO-v3"><a href="#YOLO-v3" class="headerlink" title="YOLO-v3"></a>YOLO-v3</h2><h3 id="新的网络结构Darknet-53"><a href="#新的网络结构Darknet-53" class="headerlink" title="新的网络结构Darknet-53"></a>新的网络结构Darknet-53</h3><p>在基本的图像特征提取方面，YOLO3采用了称之为Darknet-53的网络结构（含有53个卷积层），它借鉴了残差网络residual network的做法，在一些层之间设置了快捷链路（shortcut connections），采用256*256*3作为输入.</p>
+<h3 id="利用多尺度特征进行对象检测"><a href="#利用多尺度特征进行对象检测" class="headerlink" title="利用多尺度特征进行对象检测"></a>利用多尺度特征进行对象检测</h3><p>YOLO2曾采用passthrough结构来检测细粒度特征，在YOLO3更进一步采用了3个不同尺度的特征图来进行对象检测。</p>
+<ul>
+<li><p><strong>大物体检测</strong>：卷积网络在79层后，经过下方几个黄色的卷积层得到一种尺度的检测结果。相比输入图像，这里用于检测的特征图<strong>有32倍的下采样</strong>。比如输入是416*416的话，这里的特征图就是13*13了。由于下采样倍数高，这里特征图的<strong>感受野比较大</strong>，因此适合检测图像中尺寸比较大的对象。</p>
+</li>
+<li><p><strong>细粒度的检测</strong>:从第79层的特征图又开始作上采样（从79层往右开始上采样卷积），然后与第61层特征图融合（Concatenation），这样得到第91层较细粒度的特征图，同样经过几个卷积层后得到相对输入图像16倍下采样的特征图。<strong>它具有中等尺度的感受野，适合检测中等尺度的对象</strong>。最后，第91层特征图<strong>再次上采样</strong>，并与第36层<strong>特征图融合</strong>（Concatenation），最后得到相对输入图像<strong>8倍下采样的特征图</strong>。它的感受野最小，<strong>适合检测小尺寸的对象</strong>。</p>
+</li>
+</ul>
+<h3 id="9种尺度的先验框"><a href="#9种尺度的先验框" class="headerlink" title="9种尺度的先验框"></a>9种尺度的先验框</h3><p>随着输出的特征图的数量和尺度的变化，先验框的尺寸也需要相应的调整。YOLO2已经开始采用<strong>K-means聚类得到先验框的尺寸</strong>，YOLO3延续了这种方法，为每种下采样尺度设定3种先验框，总共聚类出9种尺寸的先验框。在COCO数据集这9个先验框是：(10x13)，(16x30)，(33x23)，(30x61)，(62x45)，(59x119)，(116x90)，(156x198)，(373x326)。</p>
+<h3 id="对象分类softmax改成logistic"><a href="#对象分类softmax改成logistic" class="headerlink" title="对象分类softmax改成logistic"></a>对象分类softmax改成logistic</h3><p>预测对象类别时不使用softmax，改成使用logistic的输出进行预测。这样能够<strong>支持多标签对象</strong>（比如一个人有Woman 和 Person两个标签）。</p>
+<p>YOLO3借鉴了<strong>残差网络结构</strong>，形成更深的网络层次，以及<strong>多尺度检测</strong>，提升了mAP及小物体检测效果。如果采用COCO mAP50做评估指标（不是太介意预测框的准确性的话），YOLO3的表现相当惊人，如下图所示，在精确度相当的情况下，YOLOv3的速度是其它模型的3、4倍。</p>
+
+    
+
+    
+    <div class="page-reward">
+      <a href="javascript:void(0);" class="page-reward-btn tooltip-top" target="_self">
+        <div class="tooltip tooltip-east">
+          <span class="tooltip-item">
+            赏
+          </span>
+          <span class="tooltip-content">
+            <span class="tooltip-text">
+              <span class="tooltip-inner">
+                <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i
+                    class="icon icon-quo-right"></i></p>
+                <div class="reward-box">
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/alipay.jpg">
+                    <span class="reward-type">支付宝</span>
+                  </div>
+                  
+                  
+                  <div class="reward-box-item">
+                    <img class="reward-img" src="/img/wechatpay.jpg">
+                    <span class="reward-type">微信</span>
+                  </div>
+                  
+                </div>
+              </span>
+            </span>
+          </span>
+        </div>
+      </a>
+    </div>
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Jason
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://caicaijason.github.io/2019/11/22/目标检测算法解析/" title="目标检测算法解析" target="_blank">https://caicaijason.github.io/2019/11/22/目标检测算法解析/</a>
+        </li>
+        <li>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow" target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">目标检测</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caicaijason.github.io/2019/11/22/目标检测算法解析/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/08/115-不同的子序列/" class="archive-article-date">
-        <time datetime="2019-10-08T07:42:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2019/11/26/公式模板/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          公式模板
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/22/二叉树遍历/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">高效统一的二叉树遍历方式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/08/115-不同的子序列/">115.不同的子序列</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Two-Stage的方法"><span class="toc-number">1.</span> <span class="toc-text">Two-Stage的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#R-CNN"><span class="toc-number">1.1.</span> <span class="toc-text">R-CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创新点"><span class="toc-number">1.1.1.</span> <span class="toc-text">创新点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RCNN算法主要分为4个步骤："><span class="toc-number">1.1.2.</span> <span class="toc-text">RCNN算法主要分为4个步骤：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NMS非极大值抑制："><span class="toc-number">1.1.3.</span> <span class="toc-text">NMS非极大值抑制：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点："><span class="toc-number">1.1.4.</span> <span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SPP-NET"><span class="toc-number">1.2.</span> <span class="toc-text">SPP-NET</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创新点-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">创新点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fast-R-CNN"><span class="toc-number">1.3.</span> <span class="toc-text">Fast R-CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创新点-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">创新点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法实现流程："><span class="toc-number">1.3.2.</span> <span class="toc-text">算法实现流程：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点：-1"><span class="toc-number">1.3.3.</span> <span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Faster-RCNN"><span class="toc-number">1.4.</span> <span class="toc-text">Faster-RCNN</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#算法特点"><span class="toc-number">1.4.1.</span> <span class="toc-text">算法特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Region-Proposal-Network"><span class="toc-number">1.4.2.</span> <span class="toc-text">Region Proposal Network</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#训练过程"><span class="toc-number">1.4.3.</span> <span class="toc-text">训练过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#One-Stage的方法"><span class="toc-number">2.</span> <span class="toc-text">One-Stage的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#YOLO"><span class="toc-number">2.1.</span> <span class="toc-text">YOLO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法特点-1"><span class="toc-number">2.2.</span> <span class="toc-text">算法特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法流程"><span class="toc-number">2.3.</span> <span class="toc-text">算法流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#训练过程-1"><span class="toc-number">2.4.</span> <span class="toc-text">训练过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存在的问题"><span class="toc-number">2.5.</span> <span class="toc-text">存在的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSD"><span class="toc-number">2.6.</span> <span class="toc-text">SSD</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#算法特点-2"><span class="toc-number">2.6.1.</span> <span class="toc-text">算法特点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模型结构"><span class="toc-number">2.7.</span> <span class="toc-text">模型结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSD效果好主要有三点原因："><span class="toc-number">2.8.</span> <span class="toc-text">SSD效果好主要有三点原因：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSD的缺点"><span class="toc-number">2.9.</span> <span class="toc-text">SSD的缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YOLOv2"><span class="toc-number">3.</span> <span class="toc-text">YOLOv2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#改进点"><span class="toc-number">3.1.</span> <span class="toc-text">改进点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YOLO-v3"><span class="toc-number">4.</span> <span class="toc-text">YOLO-v3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新的网络结构Darknet-53"><span class="toc-number">4.1.</span> <span class="toc-text">新的网络结构Darknet-53</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用多尺度特征进行对象检测"><span class="toc-number">4.2.</span> <span class="toc-text">利用多尺度特征进行对象检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9种尺度的先验框"><span class="toc-number">4.3.</span> <span class="toc-text">9种尺度的先验框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象分类softmax改成logistic"><span class="toc-number">4.4.</span> <span class="toc-text">对象分类softmax改成logistic</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2019/10/08/leetcode523/" class="archive-article-date">
-        <time datetime="2019-10-08T01:29:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2019/10/08/leetcode523/">leetcode523 连续的子数组和</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DP</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+<div id="SOHUCS" sid="目标检测算法解析" ></div> 
+<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+    window.changyan.api.config({
+        appid: "true",
+        conf: "true"
+    });
+</script>
+</script>
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname =
+    'true'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+      Disqus.</a></noscript>
+</section>
+
+
+
+
+
   
+  <div id="gitment-ctn"></div>
   
-    </div></section>
+    <!-- 中文 -->
+    <link rel="stylesheet" href="/lib/gitment.css">
+    <script src="/lib/gitment.js"></script>
+  
+  <script>
+    <!-- id: "目标检测算法解析" -->
+    var gitment = new Gitment({
+      id: "20191122170331",
+      owner: 'CaicaiJason',
+      repo: 'CaicaiJason.github.io',
+      oauth: {
+        client_id: 'f0ab28199c136cb9a083',
+        client_secret: '9ddeab3bd944cab6b75c7e2efd13a3d72f8c3ae3',
+      },
+    })
+    gitment.render('gitment-ctn')
+  </script>
+
+
   
 
-    
 
 
           </div>
@@ -404,8 +723,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
