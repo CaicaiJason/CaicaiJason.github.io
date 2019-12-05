@@ -20,7 +20,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://caicaijason.github.io/2019/12/05/triplet_loss解析/1.png">
 <meta property="og:image" content="https://caicaijason.github.io/2019/12/05/triplet_loss解析/2.png">
-<meta property="og:updated_time" content="2019-12-05T08:03:58.449Z">
+<meta property="og:updated_time" content="2019-12-05T08:19:21.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Triplet_Loss解析">
 <meta name="twitter:description" content="简介谷歌的论文FaceNet: A Unified Embedding for Face Recognition and Clustering最早将triplet loss应用到人脸识别中。 在监督学习中，我们通常都有一个有限大小的样本类别集合，因此可以使用softmax和交叉熵来训练网络。但是，有些情况下，我们的样本类别集合很大，比如在人脸识别中，标签集很大，而我们的任务仅仅是判断两个未见过的人">
@@ -240,7 +240,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">957字</span>
+      <span class="post-count">960字</span>
     </span>
   </span>
 
@@ -301,7 +301,7 @@
 <ul>
 <li><strong>Batch All</strong>: 计算batch_size中所有valid的的hard triplet 和 semi-hard triplet， 然后取平均得到Loss<ul>
 <li>注意因为很多 easy triplets的情况，所以平均会导致Loss很小，所以是对所有 valid 的所有求平均 （下面代码中会介绍）</li>
-<li>可以产生$P<em>K</em>(K−1)<em>(P</em>K−K)$个 Triplets<ul>
+<li>可以产生 $P * K * (K−1) * (P * K−K)$ 个 Triplets<ul>
 <li>$P*K$个 anchor</li>
 <li>$K-1$ 个 positive</li>
 <li>$P*K-K$ 个 negative</li>
@@ -309,7 +309,7 @@
 </li>
 </ul>
 </li>
-<li><strong>Batch Hard</strong>: 对于每一个anchor， 选择距离最小的$d(a, p)$ 和 距离最大的 $d(a, n)$<br>所以公有 $PK$ 个三元组triplets</li>
+<li><strong>Batch Hard</strong>: 对于每一个anchor， 选择距离最小的$d(a, p)$ 和 距离最大的 $d(a, n)$<br>所以一共有 $PK$ 个三元组triplets</li>
 </ul>
 
     
@@ -719,11 +719,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+                <a href="javascript:void(0)" class="js-tag color1">Markdown模板</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Markdown模板</a>
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -736,14 +736,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">BERT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -763,7 +755,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回溯</a>
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -776,6 +772,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">公式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回溯</a>
               </li>
              
               <li class="article-tag-list-item">
