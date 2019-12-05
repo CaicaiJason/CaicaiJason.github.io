@@ -6,25 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://caicaijason.github.io">
-  <title>115.不同的子序列 | Jason</title>
+  <title>路径总和 | Jason</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="思路:动态规划 dp[i][j] 代表 T 前 i 字符串可以由 S j 字符串组成最多个数.">
-<meta name="keywords" content="动态规划,算法">
+  <meta name="description" content="112. 路径总和给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。 说明: 叶子节点是指没有子节点的节点。 示例:给定如下二叉树，以及目标和sum = 22， 1234567      5     / \    4   8   /   / \  11  13  4 /  \      \7    2      1">
+<meta name="keywords" content="算法,二叉树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="115.不同的子序列">
-<meta property="og:url" content="https://caicaijason.github.io/2019/10/08/115-不同的子序列/index.html">
+<meta property="og:title" content="路径总和">
+<meta property="og:url" content="https://caicaijason.github.io/2019/12/05/路径总和/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="思路:动态规划 dp[i][j] 代表 T 前 i 字符串可以由 S j 字符串组成最多个数.">
+<meta property="og:description" content="112. 路径总和给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。 说明: 叶子节点是指没有子节点的节点。 示例:给定如下二叉树，以及目标和sum = 22， 1234567      5     / \    4   8   /   / \  11  13  4 /  \      \7    2      1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://caicaijason.github.io/2019/10/08/115-不同的子序列/1.png">
-<meta property="og:image" content="https://caicaijason.github.io/2019/10/08/115-不同的子序列/2.png">
-<meta property="og:updated_time" content="2019-10-08T07:48:50.902Z">
+<meta property="og:updated_time" content="2019-12-05T02:58:01.422Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="115.不同的子序列">
-<meta name="twitter:description" content="思路:动态规划 dp[i][j] 代表 T 前 i 字符串可以由 S j 字符串组成最多个数.">
-<meta name="twitter:image" content="https://caicaijason.github.io/2019/10/08/115-不同的子序列/1.png">
+<meta name="twitter:title" content="路径总和">
+<meta name="twitter:description" content="112. 路径总和给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。 说明: 叶子节点是指没有子节点的节点。 示例:给定如下二叉树，以及目标和sum = 22， 1234567      5     / \    4   8   /   / \  11  13  4 /  \      \7    2      1">
   
     <link rel="alternative" href="/atom.xml" title="Jason" type="application/atom+xml">
   
@@ -207,14 +204,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-115-不同的子序列" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-路径总和" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      115.不同的子序列
+      路径总和
     </h1>
   
 
@@ -226,8 +223,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2019/10/08/115-不同的子序列/" class="archive-article-date">
-        <time datetime="2019-10-08T07:42:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
+<a href="/2019/12/05/路径总和/" class="archive-article-date">
+        <time datetime="2019-12-05T02:07:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-05</time>
 </a>
 
   
@@ -240,7 +237,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">234字</span>
+      <span class="post-count">606字</span>
     </span>
   </span>
 
@@ -249,7 +246,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">2分</span>
     </span>
   </span>
 </div>
@@ -260,20 +257,22 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p><img src="//caicaijason.github.io/2019/10/08/115-不同的子序列/1.png" alt><br><strong>思路:</strong><br>动态规划</p>
-<p>dp[i][j] 代表 T 前 i 字符串可以由 S j 字符串组成最多个数.</p>
+    <h2 id="112-路径总和"><a href="#112-路径总和" class="headerlink" title="112. 路径总和"></a>112. 路径总和</h2><p>给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。</p>
+<p>说明: 叶子节点是指没有子节点的节点。</p>
+<p>示例:<br>给定如下二叉树，以及目标和<code>sum = 22</code>，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      5</span><br><span class="line">     / \</span><br><span class="line">    4   8</span><br><span class="line">   /   / \</span><br><span class="line">  11  13  4</span><br><span class="line"> /  \      \</span><br><span class="line">7    2      1</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
-<p>所以动态方程:</p>
-<p>当 <em>S[j] == T[i]</em> , <em>dp[i][j] = dp[i-1][j-1] + dp[i][j-1]</em>;</p>
-<p>当 <em>S[j] != T[i]</em> , <em>dp[i][j] = dp[i][j-1]</em></p>
-<p>举个例子,如图所示<br><img src="//caicaijason.github.io/2019/10/08/115-不同的子序列/2.png" alt>  </p>
-<p>对于第一行, T 为空,因为空集是所有字符串子集, 所以我们第一行都是 1</p>
-<p>对于第一列, S 为空,这样组成 T 个数当然为 0了</p>
-<p>至于下面如何进行,大家可以通过动态方程,自行模拟一下!</p>
-<p>代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numDistinct</span><span class="params">(self, s: str, t: str)</span> -&gt; int:</span></span><br><span class="line">        n1 = len(s)</span><br><span class="line">        n2 = len(t)</span><br><span class="line">        dp = [[<span class="number">0</span>] * (n1 + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(n2 + <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n1 + <span class="number">1</span>):</span><br><span class="line">            dp[<span class="number">0</span>][j] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n2 + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, n1 + <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> t[i - <span class="number">1</span>] == s[j - <span class="number">1</span>]:</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>]  + dp[i][j - <span class="number">1</span>]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dp[i][j] = dp[i][j - <span class="number">1</span>]</span><br><span class="line">        <span class="comment">#print(dp)</span></span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>][<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 
+<p>返回<code>true</code>, 因为存在目标和为<code>22</code>的根节点到叶子节点的路径<code>5-&gt;4-&gt;11-&gt;2</code>。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasPathSum</span><span class="params">(self, root: TreeNode, sum: int)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="comment"># sum减去根节点的val</span></span><br><span class="line">        sum-=root.val</span><br><span class="line">        <span class="comment"># 如果没有左子树和右子树，说明到了根节点</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root.left <span class="keyword">and</span> <span class="keyword">not</span> root.right:</span><br><span class="line">            <span class="keyword">return</span> sum==<span class="number">0</span></span><br><span class="line">        <span class="comment"># 递归遍历左右子树</span></span><br><span class="line">        <span class="keyword">return</span> self.hasPathSum(root.left,sum) <span class="keyword">or</span> self.hasPathSum(root.right,sum)</span><br></pre></td></tr></table></figure>
 
+<h2 id="113-路径总和-II"><a href="#113-路径总和-II" class="headerlink" title="113. 路径总和 II"></a>113. 路径总和 II</h2><p>给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。</p>
+<p>说明: 叶子节点是指没有子节点的节点。</p>
+<p>示例:<br>给定如下二叉树，以及目标和<code>sum = 22</code>，</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">              <span class="number">5</span></span><br><span class="line">             / \</span><br><span class="line">            <span class="number">4</span>   <span class="number">8</span></span><br><span class="line">           /   / \</span><br><span class="line">          <span class="number">11</span>  <span class="number">13</span>  <span class="number">4</span></span><br><span class="line">         /  \    / \</span><br><span class="line">        <span class="number">7</span>    <span class="number">2</span>  <span class="number">5</span>   <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回:</span></span><br><span class="line">[</span><br><span class="line">   [<span class="number">5</span>,<span class="number">4</span>,<span class="number">11</span>,<span class="number">2</span>],</span><br><span class="line">   [<span class="number">5</span>,<span class="number">8</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法一、递归法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pathSum</span><span class="params">(self, root: TreeNode, sum: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 深度优先搜索该树</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(root,tmp,sum)</span>:</span></span><br><span class="line">            <span class="comment"># 确定递归的停止条件 </span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">                <span class="keyword">return</span> </span><br><span class="line">            <span class="comment"># 如果到达根节点了，并且sum-root.val为0</span></span><br><span class="line">            <span class="comment"># 那么就可以将tmp数组添加root.val,并给res添加路径</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root.left <span class="keyword">and</span> <span class="keyword">not</span> root.right <span class="keyword">and</span> sum-root.val==<span class="number">0</span>:</span><br><span class="line">                tmp.append(root.val)</span><br><span class="line">                res.append(tmp)</span><br><span class="line">            <span class="comment"># 递归访问左右子树，更新此时的参数为 tmp+[root.val],sum-root.val</span></span><br><span class="line">            dfs(root.left,tmp+[root.val],sum-root.val)</span><br><span class="line">            dfs(root.right,tmp+[root.val],sum-root.val)</span><br><span class="line">        res=[]</span><br><span class="line">        dfs(root,[],sum)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二、迭代法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pathSum</span><span class="params">(self, root: TreeNode, sum_: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> []</span><br><span class="line">        <span class="comment"># 将root节点和值入栈</span></span><br><span class="line">        stack = [([root.val], root)]</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            <span class="comment"># 将节点和路径出栈 </span></span><br><span class="line">            tmp, node = stack.pop()</span><br><span class="line">            <span class="comment"># 如果到达根节点并且路径和满足，就将路径添加到res</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node.right <span class="keyword">and</span> <span class="keyword">not</span> node.left <span class="keyword">and</span> sum(tmp) == sum_:</span><br><span class="line">                res.append(tmp)</span><br><span class="line">            <span class="comment"># 将左右子数入栈</span></span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                stack.append((tmp + [node.right.val], node.right))</span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                stack.append((tmp + [node.left.val], node.left))</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
     
 
     
@@ -319,7 +318,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://caicaijason.github.io/2019/10/08/115-不同的子序列/" title="115.不同的子序列" target="_blank">https://caicaijason.github.io/2019/10/08/115-不同的子序列/</a>
+          <a href="https://caicaijason.github.io/2019/12/05/路径总和/" title="路径总和" target="_blank">https://caicaijason.github.io/2019/12/05/路径总和/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -338,11 +337,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
         		</li>
       		
 		</ul>
@@ -398,7 +397,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caicaijason.github.io/2019/10/08/115-不同的子序列/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caicaijason.github.io/2019/12/05/路径总和/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -413,18 +412,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/10/10/863-二叉树中所有距离为K的结点/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/12/05/triplet_loss解析/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          863-二叉树中所有距离为 K 的结点
+          Triplet_Loss解析
         
       </div>
     </a>
   
   
-    <a href="/2019/10/08/leetcode523/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">leetcode523 连续的子数组和</div>
+    <a href="/2019/11/26/公式模板/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">公式模板</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -451,7 +450,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#112-路径总和"><span class="toc-number">1.</span> <span class="toc-text">112. 路径总和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#113-路径总和-II"><span class="toc-number">2.</span> <span class="toc-text">113. 路径总和 II</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -464,7 +463,7 @@
 
 
 
-<div id="SOHUCS" sid="115-不同的子序列" ></div> 
+<div id="SOHUCS" sid="路径总和" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -509,9 +508,9 @@
     <script src="/lib/gitment.js"></script>
   
   <script>
-    <!-- id: "115.不同的子序列" -->
+    <!-- id: "路径总和" -->
     var gitment = new Gitment({
-      id: "20191008154225",
+      id: "20191205100708",
       owner: 'CaicaiJason',
       repo: 'CaicaiJason.github.io',
       oauth: {
