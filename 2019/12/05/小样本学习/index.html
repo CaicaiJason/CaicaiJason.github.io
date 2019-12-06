@@ -6,22 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://caicaijason.github.io">
-  <title>路径总和 | Jason</title>
+  <title>小样本学习 | Jason</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="112. 路径总和给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。 说明: 叶子节点是指没有子节点的节点。 示例:给定如下二叉树，以及目标和sum = 22， 1234567      5     / \    4   8   /   / \  11  13  4 /  \      \7    2      1">
-<meta name="keywords" content="算法,二叉树">
+  <meta name="description" content="什么是小样本学习？人类非常擅长通过极少量的样本识别一个新物体，比如小孩子只需要书中的一些图片就可以认识什么是“斑马”，什么是“犀牛”。在人类的快速学习能力的启发下，研究人员希望机器学习模型在学习了一定类别的大量数据后，对于新的类别，只需要少量的样本就能快速学习，这就是 Few-shot Learning 要解决的问题。  小样本学习本质上属于迁移学习的一个领域，我们能通过少量图片就能认识一个新的物">
+<meta name="keywords" content="深度学习,CV">
 <meta property="og:type" content="article">
-<meta property="og:title" content="路径总和">
-<meta property="og:url" content="https://caicaijason.github.io/2019/12/05/路径总和/index.html">
+<meta property="og:title" content="小样本学习">
+<meta property="og:url" content="https://caicaijason.github.io/2019/12/05/小样本学习/index.html">
 <meta property="og:site_name" content="Jason">
-<meta property="og:description" content="112. 路径总和给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。 说明: 叶子节点是指没有子节点的节点。 示例:给定如下二叉树，以及目标和sum = 22， 1234567      5     / \    4   8   /   / \  11  13  4 /  \      \7    2      1">
+<meta property="og:description" content="什么是小样本学习？人类非常擅长通过极少量的样本识别一个新物体，比如小孩子只需要书中的一些图片就可以认识什么是“斑马”，什么是“犀牛”。在人类的快速学习能力的启发下，研究人员希望机器学习模型在学习了一定类别的大量数据后，对于新的类别，只需要少量的样本就能快速学习，这就是 Few-shot Learning 要解决的问题。  小样本学习本质上属于迁移学习的一个领域，我们能通过少量图片就能认识一个新的物">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-05T02:58:01.422Z">
+<meta property="og:image" content="https://caicaijason.github.io/2019/12/05/小样本学习/1.png">
+<meta property="og:image" content="https://caicaijason.github.io/2019/12/05/小样本学习/2.png">
+<meta property="og:updated_time" content="2019-12-06T02:19:56.235Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="路径总和">
-<meta name="twitter:description" content="112. 路径总和给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。 说明: 叶子节点是指没有子节点的节点。 示例:给定如下二叉树，以及目标和sum = 22， 1234567      5     / \    4   8   /   / \  11  13  4 /  \      \7    2      1">
+<meta name="twitter:title" content="小样本学习">
+<meta name="twitter:description" content="什么是小样本学习？人类非常擅长通过极少量的样本识别一个新物体，比如小孩子只需要书中的一些图片就可以认识什么是“斑马”，什么是“犀牛”。在人类的快速学习能力的启发下，研究人员希望机器学习模型在学习了一定类别的大量数据后，对于新的类别，只需要少量的样本就能快速学习，这就是 Few-shot Learning 要解决的问题。  小样本学习本质上属于迁移学习的一个领域，我们能通过少量图片就能认识一个新的物">
+<meta name="twitter:image" content="https://caicaijason.github.io/2019/12/05/小样本学习/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Jason" type="application/atom+xml">
   
@@ -204,14 +207,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-路径总和" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-小样本学习" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      路径总和
+      小样本学习
     </h1>
   
 
@@ -223,8 +226,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2019/12/05/路径总和/" class="archive-article-date">
-        <time datetime="2019-12-05T02:07:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-05</time>
+<a href="/2019/12/05/小样本学习/" class="archive-article-date">
+        <time datetime="2019-12-05T08:34:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-05</time>
 </a>
 
   
@@ -237,7 +240,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">606字</span>
+      <span class="post-count">1.9k字</span>
     </span>
   </span>
 
@@ -246,7 +249,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">2分</span>
+      <span class="post-count">6分</span>
     </span>
   </span>
 </div>
@@ -257,22 +260,52 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="112-路径总和"><a href="#112-路径总和" class="headerlink" title="112. 路径总和"></a>112. 路径总和</h2><p>给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。</p>
-<p>说明: 叶子节点是指没有子节点的节点。</p>
-<p>示例:<br>给定如下二叉树，以及目标和<code>sum = 22</code>，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      5</span><br><span class="line">     / \</span><br><span class="line">    4   8</span><br><span class="line">   /   / \</span><br><span class="line">  11  13  4</span><br><span class="line"> /  \      \</span><br><span class="line">7    2      1</span><br></pre></td></tr></table></figure>
-
+    <h2 id="什么是小样本学习？"><a href="#什么是小样本学习？" class="headerlink" title="什么是小样本学习？"></a>什么是小样本学习？</h2><p>人类非常擅长通过<strong>极少量的样本</strong>识别一个新物体，比如小孩子只需要书中的一些图片就可以认识什么是“斑马”，什么是“犀牛”。在人类的快速学习能力的启发下，研究人员希望机器学习模型在学习了一定类别的大量数据后，对于新的类别，只需要少量的样本就能快速学习，这就是 Few-shot Learning 要解决的问题。 </p>
+<p><strong>小样本学习本质上属于迁移学习</strong>的一个领域，我们能通过少量图片就能认识一个新的物种，本质上是因为人类的大脑中有大量的<strong>先验知识</strong>存在。</p>
+<p>Few-shot Learning 是 <strong>Meta Learning（元学习）在监督学习领域</strong>的应用。Meta Learning，又称为 learning to learn，在 meta training 阶段将数据集分解为不同的 meta task，去学习类别变化的情况下模型的泛化能力，面对全新的类别，<strong>不需要变动已有的模型结构就可以完成新类别的分类</strong>。 </p>
 <a id="more"></a>
 
-<p>返回<code>true</code>, 因为存在目标和为<code>22</code>的根节点到叶子节点的路径<code>5-&gt;4-&gt;11-&gt;2</code>。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasPathSum</span><span class="params">(self, root: TreeNode, sum: int)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="comment"># sum减去根节点的val</span></span><br><span class="line">        sum-=root.val</span><br><span class="line">        <span class="comment"># 如果没有左子树和右子树，说明到了根节点</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root.left <span class="keyword">and</span> <span class="keyword">not</span> root.right:</span><br><span class="line">            <span class="keyword">return</span> sum==<span class="number">0</span></span><br><span class="line">        <span class="comment"># 递归遍历左右子树</span></span><br><span class="line">        <span class="keyword">return</span> self.hasPathSum(root.left,sum) <span class="keyword">or</span> self.hasPathSum(root.right,sum)</span><br></pre></td></tr></table></figure>
 
-<h2 id="113-路径总和-II"><a href="#113-路径总和-II" class="headerlink" title="113. 路径总和 II"></a>113. 路径总和 II</h2><p>给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。</p>
-<p>说明: 叶子节点是指没有子节点的节点。</p>
-<p>示例:<br>给定如下二叉树，以及目标和<code>sum = 22</code>，</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">              <span class="number">5</span></span><br><span class="line">             / \</span><br><span class="line">            <span class="number">4</span>   <span class="number">8</span></span><br><span class="line">           /   / \</span><br><span class="line">          <span class="number">11</span>  <span class="number">13</span>  <span class="number">4</span></span><br><span class="line">         /  \    / \</span><br><span class="line">        <span class="number">7</span>    <span class="number">2</span>  <span class="number">5</span>   <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 返回:</span></span><br><span class="line">[</span><br><span class="line">   [<span class="number">5</span>,<span class="number">4</span>,<span class="number">11</span>,<span class="number">2</span>],</span><br><span class="line">   [<span class="number">5</span>,<span class="number">8</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>N-way K-shot</strong> 问题：</p>
+<ul>
+<li>N-Way就是N-路或N-类，K-Shot就是K-次或K-个</li>
+<li>在元数据集（Meta-dataset）中随机抽取$N$类（Way）样本，每一类样本随机抽取$K+1$个（Shot）作为数据集,总共$N*(K+1)$个样本。</li>
+<li>从这$N$类样本的$K+1$个实例中，每类样本随机抽取$K$个实例一起作为<code>Training Set</code>（或者<code>Support Set</code>），每一类剩下的1个实例一起组成<code>Testing Set</code>（或者<code>Query Set</code>）。</li>
+<li>在小样本学习或者元学习中，为方便区分，每个任务内部的训练集（Training Set）更名为支持集（<code>Support Set</code>）、测试集更名为查询集（<code>Query Set</code>）。</li>
+<li>训练：从<code>Support Set</code>中每一类随机选取一个实例，一起够成一组训练数据，输入到模型中，进行训练。</li>
+<li>测试：从<code>Query Set</code>中随机抽取一个实例，用模型判断其属于哪一类。</li>
+</ul>
+<h2 id="小样本学习的分类"><a href="#小样本学习的分类" class="headerlink" title="小样本学习的分类"></a>小样本学习的分类</h2><p>Few-shot Learning 模型大致可分为三类：<strong>Model Finetune Based，Metric Based 和 Optimization Based</strong>。</p>
+<h3 id="基于模型微调的方法"><a href="#基于模型微调的方法" class="headerlink" title="基于模型微调的方法"></a>基于模型微调的方法</h3><p>其实就是一般的<strong>迁移学习</strong>，这种方法已被广泛地应用。获得一定量的标注数据，然后基于一个基础网络进行微调。<br>这个基础网络是通过含有丰富标签的大规模数据集获得的，比如Imagenet，然后在特定数据域上进行训练。训练时，会freeze基础网络部分的参数，对领域特定的网络参数进行训练（这里有很多训练的trick，包括如何设置固定层和学习率等），该方法可以相对较快，依赖数据量也不必太多，就能达到较好的效果。</p>
+<h3 id="基于Metric的方法"><a href="#基于Metric的方法" class="headerlink" title="基于Metric的方法"></a>基于Metric的方法</h3><p>如果在 Few-shot Learning 的任务中去训练普通的基于 cross-entropy 的神经网络分类器，那么几乎肯定是会<strong>过拟合</strong>，因为相对于神经网络中数以万计的参数，训练数据集太小了。</p>
+<p>相反，很多非参数化的方法（<strong>K-NN、K-means</strong>）是不需要优化参数的，因此可以在 meta-learning 的框架下构造一种可以端到端训练的 few-shot 分类器。该方法是对样本间距离分布进行建模，使得<strong>同类样本靠近，异类样本远离</strong>，但效果依赖距离度量的选取。因此通过<strong>学习一个端到端的最近邻分类器</strong>，它同时受益于带参数和无参数的优点，使得不但能快速的学习到新的样本，而且能对已知样本有很好的泛化性。</p>
+<h4 id="孪生网络（Siamese-Network）"><a href="#孪生网络（Siamese-Network）" class="headerlink" title="孪生网络（Siamese Network）"></a>孪生网络（Siamese Network）</h4><p>CVPR2005:<a href="https://ieeexplore.ieee.org/document/1467314" target="_blank" rel="noopener">Learning a similarity metric discriminatively, with application to face verification
+</a></p>
+<p>这个方法对输入的结构进行限制并自动发现可以从新样本上泛化的特征。通过一个有监督的基于孪生网络的度量学习来训练，然后重用那个网络所提取的特征进行one/few-shot学习。  </p>
+<p>它是一个<strong>双路的神经网络</strong>，训练时，通过组合不同类的样本成对，同时输入网络进行训练，在最上层通过一个距离的交叉熵进行loss的计算。</p>
+<p>在预测的时候，以5way-5shot为例，从5个类中随机抽取5个样本，把这个mini-batch=25的数据输入网络，最后获得25个值，取分数最高对应的类别作为预测结果。</p>
+<p>总结：</p>
+<ul>
+<li>孪生网络解决了<strong>解决类别很多</strong>（或者说不确定），然而<strong>每类样本数较少</strong>的分类任务（比如人脸识别、人脸认证），不同于一般的ImageNet或VOC的任务。</li>
+<li>孪生网络将输入映射为一个特征向量，使用<strong>两个向量之间的“距离”（L1 Norm）</strong>来表示输入之间的差异（图像语义上的差距）。</li>
+<li>不同于softmax的1个样本和triplet的3个样本，孪生网络每次需要输入<strong>2个样本</strong>作为一个样本对计算损失函数。</li>
+<li>Contrastive Loss损失函数:<br>$$L= {1\over 2N}\sum_{n=1}^Nyd^2+(1−y)max(margin−d,0)^2$$</li>
+</ul>
+<h4 id="原型网络（Prototypical-Networks）"><a href="#原型网络（Prototypical-Networks）" class="headerlink" title="原型网络（Prototypical Networks）"></a>原型网络（Prototypical Networks）</h4><p>NIPS2017:<a href="http://papers.nips.cc/paper/6996-prototypical-networks-for-few-shot-learning" target="_blank" rel="noopener">Prototypical Networks for Few-shot Learning</a>  </p>
+<p>原型网络的思想十分简单高效，效果也非常好。<br>它学习一个<strong>度量空间</strong>， 通过计算和每个类别的<strong>原型表达的距离</strong>来进行分类。文章基于这样的想法：<strong>每个类别都存在一个聚在某单个原型表达周围的embedding，该类的原型是support set在embedding空间中的均值</strong>。然后，分类问题变成在embedding空间中的最近邻。c1、c2、c3分别是三个类别的均值中心（称Prototype），将测试样本x进行embedding后，与这3个中心进行距离计算，从而获得x的类别。<br><img src="//caicaijason.github.io/2019/12/05/小样本学习/1.png" alt></p>
+<h4 id="关系网络（Relation-Networks）"><a href="#关系网络（Relation-Networks）" class="headerlink" title="关系网络（Relation Networks）"></a>关系网络（Relation Networks）</h4><p>CVPR2018:<a href="https://arxiv.org/abs/1711.06025" target="_blank" rel="noopener">Learning to Compare: Relation Network for Few-Shot Learning</a></p>
+<p><img src="//caicaijason.github.io/2019/12/05/小样本学习/2.png" alt></p>
+<p>关系网络的主体结构分为两个部分：</p>
+<ul>
+<li>一部分就是嵌入单元（embedding module）$fφ$用来<strong>提取图像的特征</strong></li>
+<li>另一部分是关联单元（relation module）$gφ$，用来<strong>计算两个图像的相似度</strong></li>
+</ul>
+<p>在训练时，我们利用<code>training set</code>来对网络进行元学习，用<code>sample set</code>中的数据与<code>query set</code> 中的数据做对比。在embedding module分别获得两者的特征、然后对特征进行连接后送入到关联单元来得到关联系数，来表示输入之间的相似度。</p>
+<p>如果对于每类我们有K(K&gt;1)个labelled的样本，我们将同一类的<strong>feature_map进行相加</strong>，然后就和上图的1-shot进行同样的操作。</p>
+<p>Relation Networks为什么能工作？</p>
+<p>论文指出，之前的few-shot工作都是<strong>预先指定好度量方式</strong>的，如欧式距离或余弦距离，学习部分主要体现在特征嵌入方面，但是该论文同时学习了特征的嵌入及非线性度量矩阵（相似度函数），这些都是端到端的调整。通过<strong>学习的到的相似性矩阵有着比人为选定的矩阵更具有灵活性</strong>，更能捕获到特征之间的相似性。</p>
+<p>总而言之，关系网络不使用预定的距离度量方式，而是通过神经网络去<strong>学习一个全新的度量方法</strong>。</p>
 
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法一、递归法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pathSum</span><span class="params">(self, root: TreeNode, sum: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 深度优先搜索该树</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(root,tmp,sum)</span>:</span></span><br><span class="line">            <span class="comment"># 确定递归的停止条件 </span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">                <span class="keyword">return</span> </span><br><span class="line">            <span class="comment"># 如果到达根节点了，并且sum-root.val为0</span></span><br><span class="line">            <span class="comment"># 那么就可以将tmp数组添加root.val,并给res添加路径</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root.left <span class="keyword">and</span> <span class="keyword">not</span> root.right <span class="keyword">and</span> sum-root.val==<span class="number">0</span>:</span><br><span class="line">                tmp.append(root.val)</span><br><span class="line">                res.append(tmp)</span><br><span class="line">            <span class="comment"># 递归访问左右子树，更新此时的参数为 tmp+[root.val],sum-root.val</span></span><br><span class="line">            dfs(root.left,tmp+[root.val],sum-root.val)</span><br><span class="line">            dfs(root.right,tmp+[root.val],sum-root.val)</span><br><span class="line">        res=[]</span><br><span class="line">        dfs(root,[],sum)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二、迭代法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pathSum</span><span class="params">(self, root: TreeNode, sum_: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> []</span><br><span class="line">        <span class="comment"># 将root节点和值入栈</span></span><br><span class="line">        stack = [([root.val], root)]</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            <span class="comment"># 将节点和路径出栈 </span></span><br><span class="line">            tmp, node = stack.pop()</span><br><span class="line">            <span class="comment"># 如果到达根节点并且路径和满足，就将路径添加到res</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node.right <span class="keyword">and</span> <span class="keyword">not</span> node.left <span class="keyword">and</span> sum(tmp) == sum_:</span><br><span class="line">                res.append(tmp)</span><br><span class="line">            <span class="comment"># 将左右子数入栈</span></span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                stack.append((tmp + [node.right.val], node.right))</span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                stack.append((tmp + [node.left.val], node.left))</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
     
 
     
@@ -318,7 +351,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://caicaijason.github.io/2019/12/05/路径总和/" title="路径总和" target="_blank">https://caicaijason.github.io/2019/12/05/路径总和/</a>
+          <a href="https://caicaijason.github.io/2019/12/05/小样本学习/" title="小样本学习" target="_blank">https://caicaijason.github.io/2019/12/05/小样本学习/</a>
         </li>
         <li>
           <strong>版权声明： </strong>
@@ -337,11 +370,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">CV</a>
         		</li>
       		
 		</ul>
@@ -397,7 +430,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caicaijason.github.io/2019/12/05/路径总和/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caicaijason.github.io/2019/12/05/小样本学习/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -412,18 +445,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2019/12/05/triplet_loss解析/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Triplet_Loss解析
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/11/26/公式模板/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">公式模板</div>
+    <a href="/2019/12/05/triplet_loss解析/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Triplet_Loss解析</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -450,7 +474,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#112-路径总和"><span class="toc-number">1.</span> <span class="toc-text">112. 路径总和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#113-路径总和-II"><span class="toc-number">2.</span> <span class="toc-text">113. 路径总和 II</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是小样本学习？"><span class="toc-number">1.</span> <span class="toc-text">什么是小样本学习？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小样本学习的分类"><span class="toc-number">2.</span> <span class="toc-text">小样本学习的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于模型微调的方法"><span class="toc-number">2.1.</span> <span class="toc-text">基于模型微调的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于Metric的方法"><span class="toc-number">2.2.</span> <span class="toc-text">基于Metric的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#孪生网络（Siamese-Network）"><span class="toc-number">2.2.1.</span> <span class="toc-text">孪生网络（Siamese Network）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原型网络（Prototypical-Networks）"><span class="toc-number">2.2.2.</span> <span class="toc-text">原型网络（Prototypical Networks）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关系网络（Relation-Networks）"><span class="toc-number">2.2.3.</span> <span class="toc-text">关系网络（Relation Networks）</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -463,7 +487,7 @@
 
 
 
-<div id="SOHUCS" sid="路径总和" ></div> 
+<div id="SOHUCS" sid="小样本学习" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -508,9 +532,9 @@
     <script src="/lib/gitment.js"></script>
   
   <script>
-    <!-- id: "路径总和" -->
+    <!-- id: "小样本学习" -->
     var gitment = new Gitment({
-      id: "20191205100708",
+      id: "20191205163436",
       owner: 'CaicaiJason',
       repo: 'CaicaiJason.github.io',
       oauth: {
