@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="description" content="Transformer简介Transformer结构来源于谷歌2017年的论文《Attention is All You Need》,它的出现引发了BERT系列模型不断刷新NLP领域SOTA的壮举，包括BERT、RoBERTa、ALBERT、SpanBERT、DistilBERT、SesameBERT、SemBERT、MobileBERT、TinyBERT 和 CamemBERT等等都是基于Tra">
-<meta name="keywords" content="NLP,深度学习,Transformer,注意力机制">
+<meta name="keywords" content="深度学习,Transformer,NLP,注意力机制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Transformer和注意力机制">
 <meta property="og:url" content="https://caicaijason.github.io/2019/12/09/Transformer和注意力机制/index.html">
@@ -25,13 +25,13 @@
 <meta property="og:image" content="https://caicaijason.github.io/2019/12/09/Transformer和注意力机制/13.jpg">
 <meta property="og:image" content="https://caicaijason.github.io/2019/12/09/Transformer和注意力机制/1.webp.jpg">
 <meta property="og:image" content="https://caicaijason.github.io/2019/12/09/Transformer和注意力机制/6.png">
-<meta property="og:image" content="https://caicaijason.github.io/2019/12/09/Transformer和注意力机制/7.png">
 <meta property="og:image" content="https://caicaijason.github.io/2019/12/09/Transformer和注意力机制/8.png">
 <meta property="og:image" content="https://caicaijason.github.io/2019/12/09/Transformer和注意力机制/9.png">
 <meta property="og:image" content="https://caicaijason.github.io/2019/12/09/Transformer和注意力机制/10.png">
 <meta property="og:image" content="https://caicaijason.github.io/2019/12/09/Transformer和注意力机制/11.png">
 <meta property="og:image" content="https://caicaijason.github.io/2019/12/09/Transformer和注意力机制/12.png">
-<meta property="og:updated_time" content="2019-12-11T03:02:27.017Z">
+<meta property="og:image" content="https://caicaijason.github.io/2019/12/09/Transformer和注意力机制/conclusion.png">
+<meta property="og:updated_time" content="2019-12-11T07:58:33.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Transformer和注意力机制">
 <meta name="twitter:description" content="Transformer简介Transformer结构来源于谷歌2017年的论文《Attention is All You Need》,它的出现引发了BERT系列模型不断刷新NLP领域SOTA的壮举，包括BERT、RoBERTa、ALBERT、SpanBERT、DistilBERT、SesameBERT、SemBERT、MobileBERT、TinyBERT 和 CamemBERT等等都是基于Tra">
@@ -251,7 +251,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2.4k字</span>
+      <span class="post-count">2.6k字</span>
     </span>
   </span>
 
@@ -260,7 +260,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">8分</span>
+      <span class="post-count">9分</span>
     </span>
   </span>
 </div>
@@ -330,16 +330,18 @@
 <li>Encoder-Decoder Attention：就是将 Decoder 和 Encoder 输入建立联系，和之前那些普通 Attention 一样；</li>
 </ul>
 <p><img src="//caicaijason.github.io/2019/12/09/Transformer和注意力机制/13.jpg" alt></p>
-<h4 id="残差结构"><a href="#残差结构" class="headerlink" title="残差结构"></a>残差结构</h4><p><img src="//caicaijason.github.io/2019/12/09/Transformer和注意力机制/1.webp.jpg" alt></p>
-<p>在每个编码器中的每个子层（自注意力、前馈网络）的周围都有一个<strong>残差连接</strong>，并且都跟随着一个<strong>层归一化</strong>步骤。</p>
+<h4 id="残差结构和层归一化"><a href="#残差结构和层归一化" class="headerlink" title="残差结构和层归一化"></a>残差结构和层归一化</h4><p><img src="//caicaijason.github.io/2019/12/09/Transformer和注意力机制/1.webp.jpg" alt></p>
+<p>在每个编码器中的每个子层（自注意力、前馈网络）的周围都有一个<strong>残差连接</strong>，并且都跟随着一个<strong>层归一化</strong>(具体LN的原理和可以参考<a href="https://arxiv.org/abs/1607.06450v1" target="_blank" rel="noopener">Layer Normalizations</a>)步骤，整个操作可以由以下公式表示：<br>$$Layer Normalizations(Residual+LayerOutput)$$</p>
 <p>在Transformer中，每个单词都被转化为512维word-embedding，将输入序列进行词嵌入之后，每个单词都会流经编码器中的两个子层。在Self-Attention中，这些路径之间存在依赖关系，而<strong>Feed-Forward层没有这些依赖关系，此时可以并行执行</strong>。<br><img src="//caicaijason.github.io/2019/12/09/Transformer和注意力机制/6.png" alt></p>
 <h4 id="Transformer中的Positional-Encoding"><a href="#Transformer中的Positional-Encoding" class="headerlink" title="Transformer中的Positional Encoding"></a>Transformer中的Positional Encoding</h4><p>在上述的编码器译码器和self-attention中，并没有包括word的位置信息，但是一句话中词语在不同的位置显然有不同的语义。</p>
-<p>因此，在Transformer中引入位置编码：构造一个跟输入word-embedding维度一样的矩阵，然后跟输入word-embedding相加得到multi-head attention的输入。</p>
-<h2 id="Self-Attenion的计算过程"><a href="#Self-Attenion的计算过程" class="headerlink" title="Self-Attenion的计算过程"></a>Self-Attenion的计算过程</h2><p><img src="//caicaijason.github.io/2019/12/09/Transformer和注意力机制/7.png" alt></p>
-<h4 id="Step1-生成Query-Key-Value三个向量"><a href="#Step1-生成Query-Key-Value三个向量" class="headerlink" title="Step1-生成Query, Key, Value三个向量"></a>Step1-生成Query, Key, Value三个向量</h4><p>Word-Embedding乘上训练得到的$W^Q$、$W^K$、$W^V$可以得到我们所需要的$q、k、v$向量。</p>
-<h4 id="Step2-计算Score、归一化、Softmax、和"><a href="#Step2-计算Score、归一化、Softmax、和" class="headerlink" title="Step2-计算Score、归一化、Softmax、和"></a>Step2-计算Score、归一化、Softmax、和</h4><ul>
+<p>因此，在Transformer中引入位置编码：构造一个跟输入word-embedding维度一样的矩阵，然后跟输入word-embedding相加得到multi-head attention的输入。<br>位置编码的公式如下：<br>$$PE(pos,2i) = sin(pos / 10000^{2i/d_{model}})$$<br>$$PE(pos,2i+i) = cos(pos / 10000^{2i/d_{model}})$$</p>
+<h2 id="Self-Attenion的计算过程"><a href="#Self-Attenion的计算过程" class="headerlink" title="Self-Attenion的计算过程"></a>Self-Attenion的计算过程</h2><!-- ![](Transformer和注意力机制/7.png) -->
+<p>Transformer中Self-Attenion的计算过程称为“scaled dot-product attention”:<br>$$Attension(Q,K,V)=softmax({QK^T\over \sqrt{d_k}})V$$</p>
+<h4 id="Step1-生成Query-Key-Value三个向量"><a href="#Step1-生成Query-Key-Value三个向量" class="headerlink" title="Step1-生成Query, Key, Value三个向量"></a>Step1-生成Query, Key, Value三个向量</h4><p>首先将word转化为<code>one-hot</code>编码，然后将<code>one-hot</code>转化为<code>Word-Embedding</code>,通常在Pytorch中可以使用<code>nn.Embedding</code>函数得到，在Transformer中默认转化为512维的<code>Word-Embedding</code>，然后将<code>Word-Embedding</code>加上<code>Positional encoding</code>得到<code>Embedding with posision</code>,这个就是我们的Self-Attention的输入。</p>
+<p><code>Embedding with posision</code>乘上训练得到的$W^Q$、$W^K$、$W^V$可以得到我们所需要的$Q、K、V$向量。</p>
+<h4 id="Step2-计算Score、Softmax、加权和"><a href="#Step2-计算Score、Softmax、加权和" class="headerlink" title="Step2-计算Score、Softmax、加权和"></a>Step2-计算Score、Softmax、加权和</h4><ul>
 <li>score为q和k的向量积$Score=q·k$</li>
-<li>除以8(因为这些向量的维度是64，8是开方)</li>
+<li>除以8，作者的解释是说防止$d_k$增大时，点积值过大，所以对其进行缩放。(因为这些向量的维度是64，8是开方)</li>
 <li>经过softmax</li>
 <li>对加权值向量求和<br>这样Self-Attenion的计算就完成了，得到的结果Feed Forward。在实际操作中，这些计算是以矩阵并行操作完成的。<br><img src="//caicaijason.github.io/2019/12/09/Transformer和注意力机制/8.png" alt></li>
 </ul>
@@ -352,7 +354,8 @@
 <p>在“多头”注意机制下，我们计算得出8个self-Attentions的结果矩阵 $Z_i$ (计算过程在上文Self-Attention已详细介绍),然后将 $Z_0,Z_1,…,Z_7$ 共8个矩阵拼接起来乘上权重矩阵$W^O$就得到最终的矩阵 $Z$ 传递给Feed Forward 层，具体过程如下图所示。<br><img src="//caicaijason.github.io/2019/12/09/Transformer和注意力机制/10.png" alt></p>
 <h2 id="模型输出"><a href="#模型输出" class="headerlink" title="模型输出"></a>模型输出</h2><p>Decoder的输出经过一层<strong>全联接网络</strong>和<strong>softmax</strong>。<br><img src="//caicaijason.github.io/2019/12/09/Transformer和注意力机制/11.png" alt></p>
 <p>得到最终的结果，映射为每个位置对应的词的概率分布。<br><img src="//caicaijason.github.io/2019/12/09/Transformer和注意力机制/12.png" alt></p>
-<h2 id="Transformer总结"><a href="#Transformer总结" class="headerlink" title="Transformer总结"></a>Transformer总结</h2><p><strong>优点</strong>：</p>
+<h2 id="Transformer总结"><a href="#Transformer总结" class="headerlink" title="Transformer总结"></a>Transformer总结</h2><p>整个Transformer的工作流程可以从下图清晰地看出。<br><img src="//caicaijason.github.io/2019/12/09/Transformer和注意力机制/conclusion.png" alt></p>
+<p><strong>优点</strong>：</p>
 <ol>
 <li>虽然Transformer最终也没有逃脱传统学习的套路，Transformer也只是一个全连接（或者是一维卷积）加Attention的结合体。但是其设计已经足够有创新，因为其<strong>抛弃了在NLP中最根本的RNN或者CNN并且取得了非常不错的效果</strong>，算法的设计非常精彩，值得每个深度学习的相关人员仔细研究和品位。</li>
 <li>2.Transformer的设计最大的带来性能提升的关键是将<strong>任意两个单词的距离是1</strong>，这对解决NLP中棘手的长期依赖问题是非常有效的。</li>
@@ -371,6 +374,7 @@
 <li><a href="https://zhuanlan.zhihu.com/p/54743941" target="_blank" rel="noopener">放弃幻想，全面拥抱Transformer：自然语言处理三大特征抽取器（CNN/RNN/TF）比较</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/48508221" target="_blank" rel="noopener">详解Transformer （Attention Is All You Need）</a></li>
 <li><a href="https://blog.csdn.net/hahajinbu/article/details/81940355" target="_blank" rel="noopener">自然语言处理中的Attention机制总结</a></li>
+<li><a href="https://blog.csdn.net/b0Q8cpra539haFS7/article/details/99016245" target="_blank" rel="noopener">遍地开花的 Attention ，你真的懂吗？</a></li>
 </ul>
 
     
@@ -437,15 +441,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NLP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Transformer</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NLP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -549,7 +553,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer简介"><span class="toc-number">1.</span> <span class="toc-text">Transformer简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是注意力机制？"><span class="toc-number">2.</span> <span class="toc-text">什么是注意力机制？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么需要Transformer？"><span class="toc-number">3.</span> <span class="toc-text">为什么需要Transformer？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer的结构和特性"><span class="toc-number">4.</span> <span class="toc-text">Transformer的结构和特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Encoders"><span class="toc-number">4.0.1.</span> <span class="toc-text">Encoders</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Decoders"><span class="toc-number">4.0.2.</span> <span class="toc-text">Decoders</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformer中的3种注意力"><span class="toc-number">4.0.3.</span> <span class="toc-text">Transformer中的3种注意力</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#残差结构"><span class="toc-number">4.0.4.</span> <span class="toc-text">残差结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformer中的Positional-Encoding"><span class="toc-number">4.0.5.</span> <span class="toc-text">Transformer中的Positional Encoding</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Self-Attenion的计算过程"><span class="toc-number">5.</span> <span class="toc-text">Self-Attenion的计算过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Step1-生成Query-Key-Value三个向量"><span class="toc-number">5.0.1.</span> <span class="toc-text">Step1-生成Query, Key, Value三个向量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step2-计算Score、归一化、Softmax、和"><span class="toc-number">5.0.2.</span> <span class="toc-text">Step2-计算Score、归一化、Softmax、和</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-Heade-Attention机制"><span class="toc-number">6.</span> <span class="toc-text">Multi-Heade Attention机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型输出"><span class="toc-number">7.</span> <span class="toc-text">模型输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer总结"><span class="toc-number">8.</span> <span class="toc-text">Transformer总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">9.</span> <span class="toc-text">Reference</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer简介"><span class="toc-number">1.</span> <span class="toc-text">Transformer简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是注意力机制？"><span class="toc-number">2.</span> <span class="toc-text">什么是注意力机制？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么需要Transformer？"><span class="toc-number">3.</span> <span class="toc-text">为什么需要Transformer？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer的结构和特性"><span class="toc-number">4.</span> <span class="toc-text">Transformer的结构和特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Encoders"><span class="toc-number">4.0.1.</span> <span class="toc-text">Encoders</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Decoders"><span class="toc-number">4.0.2.</span> <span class="toc-text">Decoders</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformer中的3种注意力"><span class="toc-number">4.0.3.</span> <span class="toc-text">Transformer中的3种注意力</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#残差结构和层归一化"><span class="toc-number">4.0.4.</span> <span class="toc-text">残差结构和层归一化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformer中的Positional-Encoding"><span class="toc-number">4.0.5.</span> <span class="toc-text">Transformer中的Positional Encoding</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Self-Attenion的计算过程"><span class="toc-number">5.</span> <span class="toc-text">Self-Attenion的计算过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Step1-生成Query-Key-Value三个向量"><span class="toc-number">5.0.1.</span> <span class="toc-text">Step1-生成Query, Key, Value三个向量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Step2-计算Score、Softmax、加权和"><span class="toc-number">5.0.2.</span> <span class="toc-text">Step2-计算Score、Softmax、加权和</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Multi-Heade-Attention机制"><span class="toc-number">6.</span> <span class="toc-text">Multi-Heade Attention机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型输出"><span class="toc-number">7.</span> <span class="toc-text">模型输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Transformer总结"><span class="toc-number">8.</span> <span class="toc-text">Transformer总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">9.</span> <span class="toc-text">Reference</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -780,11 +784,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -792,7 +800,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">BERT</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Markdown模板</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,15 +812,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NLP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">注意力机制</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+                <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Markdown模板</a>
+                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -836,23 +852,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">CV</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">PyTorch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color5">BERT</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
               </li>
             
             <div class="clearfix"></div>
