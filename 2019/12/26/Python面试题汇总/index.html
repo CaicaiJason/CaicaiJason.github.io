@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Jason">
 <meta property="og:description" content="Python基础1、列出 5 个常用 Python 标准库？12345678import os                  # 操作系统接口  示例：os.system(&apos;ls&apos;)import sys                 # 命令行参数    示例：sys.pathimport re                  # 正则模块      示例：re.match(&apos;www&apos;,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-27T08:32:50.843Z">
+<meta property="og:updated_time" content="2019-12-27T08:52:29.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python面试题汇总">
 <meta name="twitter:description" content="Python基础1、列出 5 个常用 Python 标准库？12345678import os                  # 操作系统接口  示例：os.system(&apos;ls&apos;)import sys                 # 命令行参数    示例：sys.pathimport re                  # 正则模块      示例：re.match(&apos;www&apos;,">
@@ -243,7 +243,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">24.3k字</span>
+      <span class="post-count">24.2k字</span>
     </span>
   </span>
 
@@ -279,12 +279,13 @@
 </ul>
 <h2 id="5-Python-获取当前日期？"><a href="#5-Python-获取当前日期？" class="headerlink" title="5.Python 获取当前日期？"></a>5.Python 获取当前日期？</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">print(datetime.datetime.now())</span><br></pre></td></tr></table></figure>
 
-<h2 id="6-统计字符串每个单词出现的次数"><a href="#6-统计字符串每个单词出现的次数" class="headerlink" title="6.统计字符串每个单词出现的次数"></a>6.统计字符串每个单词出现的次数</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">word_amount</span><span class="params">(sentence)</span>:</span></span><br><span class="line">    <span class="string">"""计算句子的单词数量</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    计算句子中的单词数量，并返回结果字典</span></span><br><span class="line"><span class="string">    :param sentence: 句子对象</span></span><br><span class="line"><span class="string">    :return: 计算结果字典</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># 使用split()方法切割句子</span></span><br><span class="line">    split_list = sentence.split()</span><br><span class="line">    dict_result = &#123;&#125;</span><br><span class="line">    <span class="comment"># 遍历列表，判断每个值是否在新字典的键中，如果存在则键值加一，不存在设为1</span></span><br><span class="line">    <span class="keyword">for</span> word_name <span class="keyword">in</span> split_list:</span><br><span class="line">        <span class="keyword">if</span> word_name <span class="keyword">not</span> <span class="keyword">in</span> dict_result.keys():</span><br><span class="line">            dict_result[word_name] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dict_result[word_name] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dict_result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    sentence = <span class="string">"I can because i think i can"</span></span><br><span class="line">    dict_result = word_amount(sentence)</span><br><span class="line">    print(dict_result)</span><br></pre></td></tr></table></figure>
+<h2 id="6-统计字符串每个单词出现的次数"><a href="#6-统计字符串每个单词出现的次数" class="headerlink" title="6.统计字符串每个单词出现的次数"></a>6.统计字符串每个单词出现的次数</h2><p><strong>解法1</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">word_amount</span><span class="params">(sentence)</span>:</span></span><br><span class="line">    <span class="string">"""计算句子的单词数量</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    计算句子中的单词数量，并返回结果字典</span></span><br><span class="line"><span class="string">    :param sentence: 句子对象</span></span><br><span class="line"><span class="string">    :return: 计算结果字典</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># 使用split()方法切割句子</span></span><br><span class="line">    split_list = sentence.split()</span><br><span class="line">    dict_result = &#123;&#125;</span><br><span class="line">    <span class="comment"># 遍历列表，判断每个值是否在新字典的键中，如果存在则键值加一，不存在设为1</span></span><br><span class="line">    <span class="keyword">for</span> word_name <span class="keyword">in</span> split_list:</span><br><span class="line">        <span class="keyword">if</span> word_name <span class="keyword">not</span> <span class="keyword">in</span> dict_result.keys():</span><br><span class="line">            dict_result[word_name] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dict_result[word_name] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dict_result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    sentence = <span class="string">"I can because i think i can"</span></span><br><span class="line">    dict_result = word_amount(sentence)</span><br><span class="line">    print(dict_result)</span><br></pre></td></tr></table></figure>
 
-<p>评论区 @Felix 有更优的解法，非常感谢：</p>
+<p><strong>解法2</strong></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sentence = <span class="string">"I can because i think i can"</span></span><br><span class="line"><span class="comment"># count()用来统计字符串中word出现的次数，count(sub, start=None, end=None)有三个参数，依次是待统计字符，字符索引开头，索引结尾</span></span><br><span class="line">result = &#123;word: sentence.split().count(word) <span class="keyword">for</span> word <span class="keyword">in</span> set(sentence.split())&#125;</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
 
-<p>评论区 @Carno 还有更优解，万分感谢！</p>
+<p><strong>解法3</strong></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line">sentence = <span class="string">"I can because i think i can"</span></span><br><span class="line"><span class="comment"># Counter是一个简单的计数器，可以数组中统计字符出现的个数：</span></span><br><span class="line">counts = Counter(sentence.split())</span><br><span class="line">print(counts)  <span class="comment"># Counter(&#123;'can': 2, 'i': 2, 'I': 1, 'because': 1, 'think': 1&#125;)</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="7-用-python-删除文件和用-linux-命令删除文件方法"><a href="#7-用-python-删除文件和用-linux-命令删除文件方法" class="headerlink" title="7. 用 python 删除文件和用 linux 命令删除文件方法"></a>7. 用 python 删除文件和用 linux 命令删除文件方法</h2><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Python方法</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">os.remove(<span class="string">"demo.txt"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># linux方法</span></span><br><span class="line">rm demo.txt</span><br></pre></td></tr></table></figure>
@@ -1489,7 +1490,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1497,11 +1498,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+                <a href="javascript:void(0)" class="js-tag color4">二叉树</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1521,11 +1518,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Transformer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">注意力机制</a>
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1537,23 +1530,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">DP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">CV</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人脸识别</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">回溯</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1566,6 +1547,26 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">公式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回溯</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Transformer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">注意力机制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">DP</a>
               </li>
              
               <li class="article-tag-list-item">
